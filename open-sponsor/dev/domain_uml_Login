@@ -1,0 +1,22 @@
+@startuml
+left to right direction
+database MySql {
+    folder Accounts {
+        object Users
+    }
+}
+package API {
+   class RequestLogin
+}
+package ClientSide {
+    package Model {
+        class LoginModel
+    }
+    package View {
+        class LoginView
+    }
+    package Controller {
+        class  LoginController
+    }
+}
+@enduml
