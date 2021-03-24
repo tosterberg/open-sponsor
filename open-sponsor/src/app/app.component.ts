@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'app-root',
-    template: '<h1>OpenSponsor</h1>'
+  selector: 'os-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent {}
+export class AppComponent {
+  title = 'open-sponsor';
+}
