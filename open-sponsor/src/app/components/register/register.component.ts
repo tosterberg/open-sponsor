@@ -38,8 +38,6 @@ export class RegisterComponent implements OnInit {
           password: this.password
       }
 
-
-
       //Required Fields
       if(!this.validateService.validateRegister(user)){
           this.flashMessage.show('Please fill in all fields', {cssClass: 'alert-danger', timeout: 3000});
@@ -52,12 +50,12 @@ export class RegisterComponent implements OnInit {
       }
 
       // Register User
-      this.authService.registerUser(user).subscribe(data => {
-          if(true){ //data.success when wired to backend
+      this.authService.registerUser(user).subscribe((data: any) => {
+          if(data.success){ //data.success when wired to backend
               this.flashMessage.show('You are now registered and can log in', {cssClass: 'alert-success', timeout: 3000});
               this.router.navigate(['/login']);
           } else {
-              this.flashMessage.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000});
+              this.flashMessage.show('Sfomething went wrong', {cssClass: 'alert-danger', timeout: 3000});
               this.router.navigate(['/register']);
           }
       });
