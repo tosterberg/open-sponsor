@@ -840,24 +840,23 @@ __webpack_require__.r(__webpack_exports__);
 class AuthService {
     constructor(http) {
         this.http = http;
+        this.url = 'http://localhost:3000/';
     }
     registerUser(user) {
         let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpHeaders"]();
         headers = headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:3000/users/register', user, { headers: headers });
+        return this.http.post(this.url + 'users/register', user, { headers: headers });
     }
     authenticateUser(user) {
         let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpHeaders"]();
         headers = headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:3000/users/authenticate', user, { headers: headers });
+        return this.http.post(this.url + 'users/authenticate', user, { headers: headers });
     }
     getProfile() {
         let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpHeaders"]();
         this.loadToken();
         headers = headers.append('Authorization', this.authToken);
-        console.log('Auth Header:', headers);
-        console.log('http://localhost:3000/users/profile', { headers: headers });
-        return this.http.get('http://localhost:3000/users/profile', { headers: headers });
+        return this.http.get(this.url + 'users/profile', { headers: headers });
     }
     loadToken() {
         const token = localStorage.getItem('id_token');
