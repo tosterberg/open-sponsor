@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 
 @Injectable()
@@ -14,7 +15,7 @@ export class AuthService {
     registerUser(user){
         let headers = new HttpHeaders();
 
-        headers.append('Content-Type', 'application/json');
+        headers = headers.append('Content-Type', 'application/json');
 
         return this.http.post('http://localhost:3000/users/register', user, {headers: headers});
     }
@@ -22,9 +23,30 @@ export class AuthService {
     authenticateUser(user){
         let headers = new HttpHeaders();
 
-        headers.append('Content-Type', 'application/json');
+        headers = headers.append('Content-Type', 'application/json');
 
         return this.http.post('http://localhost:3000/users/authenticate', user, {headers: headers});
+    }
+
+    getProfile(){
+        let headers = new HttpHeaders();
+        this.loadToken();
+        headers = headers.append('Authorization', this.authToken);
+        console.log('Auth Header:', headers);
+        console.log('http://localhost:3000/users/profile', {headers: headers});
+        return this.http.get('http://localhost:3000/users/profile', {headers: headers});
+    }
+
+    loadToken(){
+        const token = localStorage.getItem('id_token');
+        this.authToken = token;
+    }
+
+    loggedIn(){
+        const helper = new JwtHelperService();
+        this.loadToken();
+        const isExpired = helper.isTokenExpired(this.authToken)
+        return !isExpired;
     }
 
     storeUserData(token, user){
