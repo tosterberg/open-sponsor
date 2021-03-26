@@ -4,7 +4,6 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse justify-content-end" id="navbar">
         <ul class="navbar-nav">
           <li *ngIf="authService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
@@ -16,11 +15,6 @@
           <li *ngIf="!authService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
             <a class="nav-link" [routerLink]="['/login']">Login</a>
           </li>
-          <!-- Disabled example
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
-          -->
           <li *ngIf="authService.loggedIn()" class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" [routerLink]="['/profile']" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">Profile</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown">
@@ -33,11 +27,6 @@
             <a class="nav-link" (click)="onLogoutClick()" href="#">Logout</a>
           </li>
         </ul>
-        <!--
-        <form>
-          <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-        </form>
-        -->
       </div>
     </div>
   </nav>
