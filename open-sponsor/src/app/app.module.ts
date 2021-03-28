@@ -15,12 +15,18 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ChatroomComponent } from './components/chatroom/chatroom.component';
+import { UserListComponent } from './components/chatroom/user-list/user-list.component';
+import { ChatFeedComponent } from './components/chatroom/chat-feed/chat-feed.component';
+import { ChatMessageComponent } from './components/chatroom/chat-message/chat-message.component';
+import { ChatFormComponent } from './components/chatroom/chat-form/chat-form.component';
 
 //import services
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth.guard'
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { ChatService } from './services/chat.service';
 
 
 //  Create route map for moving around the url
@@ -30,7 +36,8 @@ const appRoutes: Routes = [
     {path:'register', component: RegisterComponent},
     {path:'login', component: LoginComponent},
     {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
-    {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]}
+    {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
+    {path:'chatroom', component: ChatroomComponent, canActivate:[AuthGuard]}
 ]
 
 /*
@@ -48,7 +55,12 @@ const appRoutes: Routes = [
     RegisterComponent,
     HomeComponent,
     DashboardComponent,
-    ProfileComponent
+    ProfileComponent,
+    ChatroomComponent,
+    UserListComponent,
+    ChatFeedComponent,
+    ChatMessageComponent,
+    ChatFormComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +74,8 @@ const appRoutes: Routes = [
       ValidateService,
       AuthService,
       JwtHelperService,
-      AuthGuard
+      AuthGuard,
+      ChatService
   ],
   bootstrap: [AppComponent]
 })

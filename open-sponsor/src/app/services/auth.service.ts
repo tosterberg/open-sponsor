@@ -37,6 +37,11 @@ export class AuthService {
         this.authToken = token;
     }
 
+    loadUser(){
+        const user = localStorage.getItem('user');
+        this.user = user;
+    }
+
     loggedIn(){
         const helper = new JwtHelperService();
         this.loadToken();

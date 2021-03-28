@@ -16,11 +16,11 @@
             <a class="nav-link" [routerLink]="['/login']">Login</a>
           </li>
           <li *ngIf="authService.loggedIn()" class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" [routerLink]="['/profile']" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">Profile</a>
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><a class="dropdown-item" [routerLink]="['/profile']">My Profile</a></li>
+                <li><a class="dropdown-item" [routerLink]="['/chatroom']">My Chatroom</a></li>
+                <li><a class="dropdown-item disabled" href="#">My Step-Work</a></li>
             </ul>
           </li>
           <li *ngIf="authService.loggedIn()" class="nav-item">
