@@ -1,0 +1,7 @@
+@startuml
+class ProfileComponent {
+  -user
+  +constructor()
+  +ngOnInit()
+}
+@enduml

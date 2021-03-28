@@ -1,0 +1,14 @@
+@startuml
+left to right direction
+actor Moderator as g
+package Browser {
+  usecase "Review User" as UCm1
+  usecase "Review Module" as UCm2
+  usecase "Manage User Accounts" as UCm3
+  usecase "Manage Saved Modules" as UCm4
+}
+g --> UCm1
+g --> UCm2
+g --> UCm3
+g --> UCm4
+@enduml

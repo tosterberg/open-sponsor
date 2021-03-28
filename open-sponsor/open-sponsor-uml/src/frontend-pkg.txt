@@ -1,0 +1,27 @@
+@startuml
+left to right direction
+package app {
+    class DashboardComponent
+    class HomeComponent
+    class LoginComponent
+    class NavbarComponent
+    class ProfileComponent
+    class RegisterComponent
+    interface User
+    class AuthGuard
+    class AuthService
+    class ValidateService
+}
+package routes {
+    class Router
+}
+LoginComponent <-- AuthService
+LoginComponent <-- Router
+NavbarComponent <-- AuthService
+NavbarComponent <-- Router
+ProfileComponent <-- AuthService
+RegisterComponent <-- AuthService
+RegisterComponent <-- Router
+RegisterComponent <-- ValidateService
+AuthGuard <-- AuthService
+@enduml

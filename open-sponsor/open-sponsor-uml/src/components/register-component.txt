@@ -1,0 +1,11 @@
+@startuml
+class RegisterComponent {
+  -name
+  -username
+  -email
+  -password
+  +constructor()
+  +ngOnInit()
+  +onRegisterSubmit()
+}
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+class AuthService {
+    -authToken
+    -user
+    -url
+    +constructor()
+    +registerUser()
+    +authenticateUser()
+    +getProfile()
+    +loadToken()
+    +loggedIn()
+    +storeUserData()
+    +logout()
+}
+@enduml

@@ -1,0 +1,7 @@
+@startuml
+class AuthService {
+    +constructor()
+    +validateRegister()
+    +validateEmail()
+}
+@enduml

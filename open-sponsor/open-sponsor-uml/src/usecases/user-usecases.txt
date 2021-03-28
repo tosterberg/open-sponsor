@@ -1,0 +1,22 @@
+@startuml
+left to right direction
+actor User as g
+package Browser {
+  usecase "Register Account" as UC01
+  usecase "Login" as UC02
+  usecase "Find a Sponsor" as UC03
+  usecase "Connect to Sponsor" as UC04
+  usecase "Message connected user" as UC05
+  usecase "Find Step-work" as UC06
+  usecase "Work on Saved Step-work" as UC07
+  usecase "Create a Step-work module" as UC08
+}
+g --> UC01
+g --> UC02
+g --> UC03
+g --> UC04
+g --> UC05
+g --> UC06
+g --> UC07
+g --> UC08
+@enduml

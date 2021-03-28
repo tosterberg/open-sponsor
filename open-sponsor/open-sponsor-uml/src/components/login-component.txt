@@ -1,0 +1,9 @@
+@startuml
+class LoginComponent {
+  -username
+  -password
+  +constructor()
+  +ngOnInit()
+  +onLoginSubmit()
+}
+@enduml
