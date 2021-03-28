@@ -32,6 +32,11 @@ export class AuthService {
         return this.http.get(this.url+'users/profile', {headers: headers});
     }
 
+    getUser(){
+        this.loadUser();
+        return this.user;
+    }
+
     loadToken(){
         const token = localStorage.getItem('id_token');
         this.authToken = token;

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ChatService } from '../../../services/chat.service';
-import { AuthService } from '../../../services/auth.service';
+//import { ChatService } from '../../../services/chat.service';
+//import { AuthService } from '../../../services/auth.service';
 import { ChatMessage } from '../../../models/chat-message.model';
 
 @Component({
@@ -17,7 +17,7 @@ export class ChatMessageComponent implements OnInit {
     //isOwnMessage: boolean;
 
 
-  constructor(private authService: AuthService) {
+  constructor() {
       this.chatMessage = {};
       this.messageContent = '';
       this.username = '';
