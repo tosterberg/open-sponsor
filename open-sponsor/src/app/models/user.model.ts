@@ -3,8 +3,8 @@ export class User {
     email?: string;
     username?: string;
     password?: string;
-    lookingFor?: boolean;
-    lookingTo?: boolean;
+    sponsor?: string;
+    sponsee?: string;
     bio?: string;
     status?: string;
 }
