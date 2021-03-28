@@ -15,17 +15,13 @@ export class AuthService {
 
     registerUser(user){
         let headers = new HttpHeaders();
-
         headers = headers.append('Content-Type', 'application/json');
-
         return this.http.post(this.url+'users/register', user, {headers: headers});
     }
 
     authenticateUser(user){
         let headers = new HttpHeaders();
-
         headers = headers.append('Content-Type', 'application/json');
-
         return this.http.post(this.url+'users/authenticate', user, {headers: headers});
     }
 
