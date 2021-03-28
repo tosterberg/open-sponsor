@@ -13,13 +13,13 @@ export class AuthService {
         private http: HttpClient,
     ) { }
 
-    registerUser(user){
+    registerUser(user: any){
         let headers = new HttpHeaders();
         headers = headers.append('Content-Type', 'application/json');
         return this.http.post(this.url+'users/register', user, {headers: headers});
     }
 
-    authenticateUser(user){
+    authenticateUser(user: any){
         let headers = new HttpHeaders();
         headers = headers.append('Content-Type', 'application/json');
         return this.http.post(this.url+'users/authenticate', user, {headers: headers});
@@ -44,7 +44,7 @@ export class AuthService {
         return !isExpired;
     }
 
-    storeUserData(token, user){
+    storeUserData(token: any, user: any){
         localStorage.setItem('id_token', token);
         localStorage.setItem('user', JSON.stringify(user));
         this.authToken = token;

@@ -2,7 +2,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
@@ -38,7 +37,7 @@ const appRoutes: Routes = [
     declarations: components,
     imports: modules,
     providers: services,
-    bootstrap: topDOM component
+    bootstrap: Init component
 */
 
 @NgModule({
@@ -54,7 +53,6 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
     AppRoutingModule,
