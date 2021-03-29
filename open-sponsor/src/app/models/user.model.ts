@@ -3,6 +3,8 @@ export class User {
     email?: string;
     username?: string;
     password?: string;
+    lfsponsor?: boolean;
+    sponsoring?: boolean;
     sponsor?: string;
     sponsee?: string;
     bio?: string;

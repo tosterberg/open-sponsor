@@ -21,6 +21,30 @@ const UserSchema = mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    lfsponsor: {
+        type: Boolean,
+        required: true
+    },
+    sponsoring: {
+        type: Boolean,
+        required: true
+    },
+    bio: {
+        type: String,
+        default: ''
+    },
+    reported: {
+        type: [{ username: String, date: Date }],
+        default: []
+    },
+    sponsor: {
+        type: String,
+        default: null
+    },
+    sponsee: {
+        type: [{ username: String }],
+        default: []
     }
 });
 
@@ -44,7 +68,7 @@ module.exports.addUser = function(newUser, callback){
             newUser.password = hash;
             newUser.save(callback);
         })
-    })
+    });
 }
 
 module.exports.comparePassword = function(candidatePassword, hash, callback){

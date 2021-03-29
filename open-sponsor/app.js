@@ -28,6 +28,7 @@ mongoose.connection.on('error', (err) => {
 const app = express();
 
 const users = require('./routes/users')
+const messages = require('./routes/messages')
 
 //  Port Number
 const port = 3000;
@@ -45,6 +46,7 @@ app.use(passport.session());
 require('./config/passport')(passport);
 
 app.use('/users', users);
+app.use('/messages', messages);
 
 //  Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
@@ -56,7 +58,8 @@ app.get('/', (req, res) => {
 
 //  Re-route all unexpected routes to home
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/index.html'));
+    res.sendFile('http://localhost:4200/');
+    //res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 //  Start Server
