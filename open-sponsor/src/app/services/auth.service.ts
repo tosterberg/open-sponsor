@@ -39,7 +39,6 @@ export class AuthService {
     }
 
     updateUser(user: any){
-        console.log('updateUser()',user);
         let headers = new HttpHeaders();
         headers = headers.append('Content-Type', 'application/json');
         return this.http.put(this.url+'users/edit/'+user._id, user, {headers: headers});

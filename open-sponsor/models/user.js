@@ -74,9 +74,7 @@ module.exports.addUser = function(newUser, callback){
 }
 
 module.exports.updateUser = function(req, callback){
-    console.log(req._id, req);
     User.findByIdAndUpdate(req._id, req, callback);
-    //User.findByIdAndUpdate(updtUser._id, updtUser, callback);
 }
 
 module.exports.comparePassword = function(candidatePassword, hash, callback){

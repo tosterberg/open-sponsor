@@ -35,12 +35,10 @@ export class ProfileComponent implements OnInit {
   }
 
   onEdit() {
-      console.log('edit...');
       this.edit = true;
   }
 
   onSave() {
-      console.log('save...');
       this.authService.updateUser(this.user).subscribe((data: any) => {
           if(data.success){
               this.flashMessage.show('Your account was updated', {cssClass: 'alert-success', timeout: 3000});
