@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-//import { Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { ChatMessage } from '../models/chat-message.model';
 
@@ -9,34 +9,33 @@ import { ChatMessage } from '../models/chat-message.model';
 })
 export class ChatService {
     user: any;
-    //chatMessages: Observable<ChatMessage[]>;
+    chatMessages: Observable<ChatMessage[]>;
     chatMessage: ChatMessage = {};
     username: any;
 
   constructor(private authService: AuthService) {
       this.authService.loadUser();
-      //this.chatMessages = [this.chatMessage];
+      this.chatMessages = new Observable;
       this.user = this.authService.user;
   }
 
   sendMessage(msg: string) {
       const timestamp = this.getTimeStamp();
-      /*
       this.chatMessages = this.getMessages();
-
+      /*
       this.chatMessages.push({
+          username: this.user.username,
           message: msg,
-          timeSent: timestamp,
-          username: this.user,
+          timestamp: timestamp
       });
       */
       console.log('sendMessages(msg)', msg, this.authService.user, timestamp);
   }
 
-  getMessages() { //: Observable<ChatMessage[]>
+  getMessages(): Observable<ChatMessage[]> {
       console.log('getMessages()');
       //query to create our message feed binding
-      //return this.chatMessages;
+      return this.chatMessages;
   }
 
   getTimeStamp() {
