@@ -2,16 +2,16 @@
 
 */
 const express = require('express');
-const router = express.Router();
+const message = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
-const User = require('../models/user');
+const Message = require('../models/message');
 
 
 
 //  Post chat message
-router.post('/chatmessage', (req, res, next) => {
+message.post('/chatmessage', (req, res, next) => {
     let newMsg = new Message({
         key: req.body.key,
         username: req.body.username,
@@ -30,8 +30,8 @@ router.post('/chatmessage', (req, res, next) => {
 
 //  **PROTECTED** Chatroom
 
-router.get('/chatroom', passport.authenticate('jwt', {session:false}), (req, res, next) => {
+message.get('/chatroom', passport.authenticate('jwt', {session:false}), (req, res, next) => {
     res.json({user: req.user});
 });
 
-module.exports = router;
+module.exports = message;

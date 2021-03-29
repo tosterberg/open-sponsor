@@ -24,11 +24,13 @@ const UserSchema = mongoose.Schema({
     },
     lfsponsor: {
         type: Boolean,
-        required: true
+        required: true,
+        default: false
     },
     sponsoring: {
         type: Boolean,
-        required: true
+        required: true,
+        default: false
     },
     bio: {
         type: String,
@@ -40,7 +42,7 @@ const UserSchema = mongoose.Schema({
     },
     sponsor: {
         type: String,
-        default: null
+        default: undefined
     },
     sponsee: {
         type: [{ username: String }],

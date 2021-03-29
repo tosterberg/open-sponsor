@@ -1,10 +1,21 @@
 <div *ngIf="user; else elseBlock">
     <h2 class="page-header">Hello {{user.name}}!</h2>
     <ul class="list-group">
-        <li class="list-group-item">Name: {{user.name}}</li>
         <li class="list-group-item">Username: {{user.username}}</li>
+        <li class="list-group-item">Name: {{user.name}}</li>
+        <span>Name: <input type="text" [(ngModel)]="user.name" name="user.name" class="form-control-sm"></span>
         <li class="list-group-item">Email: {{user.email}}</li>
+        <li class="list-group-item">Looking for a sponsor? {{user.lfsponsor}}</li>
+        <li class="list-group-item">Looking to sponsor others? {{user.sponsoring}}</li>
+        <li *ngIf="user.sponsor;" class="list-group-item">Sponsor: {{user.sponsor}}</li>
+        <!--
+        <div *ngFor="let user.sponsee.username of user.sponsee;" class="list-group-item">Sponsee/s: {{user.sponsee.username}}</div>
+        -->
+        <li class="list-group-item">Biography: {{user.bio}}</li>
     </ul>
+    <span class="text-center">
+        <input type="submit" class="btn btn-primary" value="Edit">
+    </span>
 </div>
 <ng-template #elseBlock>
     <div class="jumbotron text-center">

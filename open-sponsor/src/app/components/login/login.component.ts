@@ -9,23 +9,23 @@ import { FlashMessagesService } from 'angular2-flash-messages';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-    username: String;
-    password: String;
+    username: string;
+    password: string;
 
   constructor(
       private authService:AuthService,
       private router:Router,
       private flashMessage:FlashMessagesService
   ) {
-      this.username = "";
-      this.password = "";
+      this.username = '';
+      this.password = '';
   }
 
   ngOnInit(): void {
   }
 
   onLoginSubmit(){
-      const user =  {
+      const user = {
           username: this.username,
           password: this.password
       }

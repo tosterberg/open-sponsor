@@ -11,9 +11,12 @@ export class AuthService {
 
     constructor(
         private http: HttpClient,
-    ) { }
+    ) {
+    }
 
     registerUser(user: any){
+        console.log('registerUser',
+        user);
         let headers = new HttpHeaders();
         headers = headers.append('Content-Type', 'application/json');
         return this.http.post(this.url+'users/register', user, {headers: headers});
