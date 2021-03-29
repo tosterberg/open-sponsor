@@ -54,7 +54,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //  Display invalid root route on server port
 app.get('/', (req, res) => {
     res.send('Invalid Endpoint')
-})
+});
 
 //  Re-route all unexpected routes to home
 app.get('*', (req, res) => {

@@ -1,21 +1,46 @@
 <div *ngIf="user; else elseBlock">
-    <h2 class="page-header">Hello {{user.name}}!</h2>
-    <ul class="list-group">
-        <li class="list-group-item">Username: {{user.username}}</li>
-        <li class="list-group-item">Name: {{user.name}}</li>
-        <span>Name: <input type="text" [(ngModel)]="user.name" name="user.name" class="form-control-sm"></span>
-        <li class="list-group-item">Email: {{user.email}}</li>
-        <li class="list-group-item">Looking for a sponsor? {{user.lfsponsor}}</li>
-        <li class="list-group-item">Looking to sponsor others? {{user.sponsoring}}</li>
-        <li *ngIf="user.sponsor;" class="list-group-item">Sponsor: {{user.sponsor}}</li>
-        <!--
-        <div *ngFor="let user.sponsee.username of user.sponsee;" class="list-group-item">Sponsee/s: {{user.sponsee.username}}</div>
-        -->
-        <li class="list-group-item">Biography: {{user.bio}}</li>
-    </ul>
-    <span class="text-center">
-        <input type="submit" class="btn btn-primary" value="Edit">
-    </span>
+    <div *ngIf="!edit;">
+        <h2 class="page-header">Hello {{user.name}}!</h2>
+        <ul class="list-group">
+            <li class="list-group-item">Username: {{user.username}}</li>
+            <li class="list-group-item">Name: {{user.name}}</li>
+            <li class="list-group-item">Email: {{user.email}}</li>
+            <li class="list-group-item">Looking for a sponsor? {{user.lfsponsor}}</li>
+            <li class="list-group-item">Looking to sponsor others? {{user.sponsoring}}</li>
+            <li *ngIf="user.sponsor;" class="list-group-item">Sponsor: {{user.sponsor}}</li>
+            <!--
+            <div *ngFor="let user.sponsee.username of user.sponsee;" class="list-group-item">Sponsee/s: {{user.sponsee.username}}</div>
+            -->
+            <li class="list-group-item">Biography: {{user.bio}}</li>
+        </ul>
+        <button (click)="onEdit()" class="btn btn-secondary">Edit</button>
+    </div>
+    <div *ngIf="edit;">
+        <h3 class="page-header text-center">Editing {{user.username}}...</h3>
+        <table class="table-bordered">
+            <tr>
+                <td>Name: </td>
+                <td><input type="text" [(ngModel)]="user.name" name="user.name" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>Email: </td>
+                <td><input type="text" [(ngModel)]="user.email" name="user.email" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>Looking for a sponsor? </td>
+                <td><input type="checkbox" [(ngModel)]="user.lfsponsor" name="user.lfsponsor" class="form-control-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Looking to sponsor others? </td>
+                <td><input type="checkbox" [(ngModel)]="user.sponsoring" name="user.sponsoring" class="form-control-checkbox disable"></td>
+            </tr>
+            <tr>
+                <td>Biography: </td>
+                <td><textarea [(ngModel)]="user.bio" name="user.bio" rows="5" cols="80"></textarea></td>
+            </tr>
+        </table>
+        <button (click)="onSave()" class="btn btn-primary">Save</button>
+    </div>
 </div>
 <ng-template #elseBlock>
     <div class="jumbotron text-center">

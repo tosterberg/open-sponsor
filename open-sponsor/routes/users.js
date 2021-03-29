@@ -31,6 +31,18 @@ router.post('/register', (req, res, next) => {
     });
 });
 
+router.put('/edit/:id', (req, res, next) => {
+    console.log('router.patch', req.body.bio);
+
+    User.updateUser(req.body, (err, user) => {
+        if(err){
+            res.json({success: false, msg:'Failed to update user'});
+        } else {
+            res.json({success: true, msg:'User updated'});
+        }
+    });
+});
+
 //  Authenticate
 router.post('/authenticate', (req, res, next) => {
     const username = req.body.username;
@@ -56,7 +68,12 @@ router.post('/authenticate', (req, res, next) => {
                         id: user._id,
                         name: user.name,
                         username: user.username,
-                        email: user.email
+                        email: user.email,
+                        lfsponsor: user.lfsponsor,
+                        sponsoring: user.sponsoring,
+                        sponsor: user.sponsor,
+                        sponsee: user.sponsee,
+                        bio: user.bio
                     }
                 });
             } else {

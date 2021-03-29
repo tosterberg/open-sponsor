@@ -58,7 +58,7 @@ module.exports.getUserByID = function(id, callback){
 }
 
 module.exports.getUserByUsername = function(username, callback){
-    const query = {username: username}
+    const query = {username: username};
     User.findOne(query, callback);
 }
 
@@ -71,6 +71,12 @@ module.exports.addUser = function(newUser, callback){
             newUser.save(callback);
         })
     });
+}
+
+module.exports.updateUser = function(req, callback){
+    console.log(req._id, req);
+    User.findByIdAndUpdate(req._id, req, callback);
+    //User.findByIdAndUpdate(updtUser._id, updtUser, callback);
 }
 
 module.exports.comparePassword = function(candidatePassword, hash, callback){

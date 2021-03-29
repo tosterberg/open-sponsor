@@ -15,8 +15,6 @@ export class AuthService {
     }
 
     registerUser(user: any){
-        console.log('registerUser',
-        user);
         let headers = new HttpHeaders();
         headers = headers.append('Content-Type', 'application/json');
         return this.http.post(this.url+'users/register', user, {headers: headers});
@@ -38,6 +36,13 @@ export class AuthService {
     getUser(){
         this.loadUser();
         return this.user;
+    }
+
+    updateUser(user: any){
+        console.log('updateUser()',user);
+        let headers = new HttpHeaders();
+        headers = headers.append('Content-Type', 'application/json');
+        return this.http.put(this.url+'users/edit/'+user._id, user, {headers: headers});
     }
 
     loadToken(){
