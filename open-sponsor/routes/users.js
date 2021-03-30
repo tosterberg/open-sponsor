@@ -32,8 +32,6 @@ router.post('/register', (req, res, next) => {
 });
 
 router.put('/edit/:id', (req, res, next) => {
-    console.log('router.patch', req.body.bio);
-
     User.updateUser(req.body, (err, user) => {
         if(err){
             res.json({success: false, msg:'Failed to update user'});
@@ -65,7 +63,7 @@ router.post('/authenticate', (req, res, next) => {
                     success: true,
                     token: 'JWT '+token,
                     user: {
-                        id: user._id,
+                        _id: user._id,
                         name: user.name,
                         username: user.username,
                         email: user.email,
@@ -73,7 +71,8 @@ router.post('/authenticate', (req, res, next) => {
                         sponsoring: user.sponsoring,
                         sponsor: user.sponsor,
                         sponsee: user.sponsee,
-                        bio: user.bio
+                        bio: user.bio,
+                        status: 'online'
                     }
                 });
             } else {

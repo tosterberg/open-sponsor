@@ -33,8 +33,11 @@ const UserSchema = mongoose.Schema({
         default: false
     },
     bio: {
+        type: String
+    },
+    status: {
         type: String,
-        default: ''
+        required: true
     },
     reported: {
         type: [{ username: String, date: Date }],
@@ -46,7 +49,7 @@ const UserSchema = mongoose.Schema({
     },
     sponsee: {
         type: [{ username: String }],
-        default: []
+        default: [{ _id: String }]
     }
 });
 
@@ -74,6 +77,7 @@ module.exports.addUser = function(newUser, callback){
 }
 
 module.exports.updateUser = function(req, callback){
+    console.log(req._id, req.status);
     User.findByIdAndUpdate(req._id, req, callback);
 }
 

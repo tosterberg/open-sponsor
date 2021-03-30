@@ -20,7 +20,14 @@ export class NavbarComponent implements OnInit {
   }
 
   onLogoutClick(){
-      this.authService.logout();
+      this.authService.updateUserOffline().subscribe((data: any) => {
+          if(data.success){
+              console.log(data);
+          } else {
+              console.log(data);
+          }
+      });
+      this.authService.logout()
       this.flashMessage.show("Logout Successful", {
           cssClass: 'alert-success',
           timeout: 3000});
