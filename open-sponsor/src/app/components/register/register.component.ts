@@ -22,9 +22,6 @@ export class RegisterComponent implements OnInit {
   ) {
       this.user.lfsponsor = false;
       this.user.sponsoring = false;
-      this.user.sponsor = undefined;
-      this.user.sponsee = [{}];
-      this.user.bio = '';
       this.user.status = 'offline';
     }
 

@@ -19,7 +19,8 @@ router.post('/register', (req, res, next) => {
         sponsoring: req.body.sponsoring,
         status: req.body.status,
         sponsor: req.body.sponsor,
-        sponsee: req.body.sponsee
+        sponsee: req.body.sponsee,
+        bio: req.body.bio
     });
 
     User.addUser(newUser, (err, user) => {

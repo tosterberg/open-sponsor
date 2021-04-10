@@ -40,7 +40,7 @@ const UserSchema = mongoose.Schema({
         required: true
     },
     reported: {
-        type: [{ username: String, date: Date }],
+        type: [{ _id: String, date: Date }],
         default: []
     },
     sponsor: {
@@ -48,8 +48,8 @@ const UserSchema = mongoose.Schema({
         default: undefined
     },
     sponsee: {
-        type: [{ username: String }],
-        default: [{ _id: String }]
+        type: [{ _id: String, username: String }],
+        default: []
     }
 });
 
