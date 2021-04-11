@@ -1,7 +1,8 @@
 export class ChatMessage {
-    key?: [{username: string}];
+    key?: [{}];
     _id?: string;
     username?: string;
     message?: string;
-    timestamp?: Date = new Date();
+    timestamp?: string;
+    datetime?: number;
 }

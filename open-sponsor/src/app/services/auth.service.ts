@@ -10,9 +10,7 @@ export class AuthService {
     user!: User;
     url: String = 'http://localhost:3000/';
 
-    constructor(
-        private http: HttpClient,
-    ) {
+    constructor(private http: HttpClient) {
         this.user = new User();
     }
 
@@ -51,14 +49,12 @@ export class AuthService {
     updateUserOnline(){
         let headers = new HttpHeaders();
         headers = headers.append('Content-Type', 'application/json');
-        console.log('updateUserOnline()', {_id: this.user._id, status: "online"});
         return this.http.put(this.url+'users/edit/'+this.user._id, {_id: this.user._id, status: "online"}, {headers: headers});
     }
 
     updateUserOffline(){
         let headers = new HttpHeaders();
         headers = headers.append('Content-Type', 'application/json');
-        console.log('updateUserOffline()', this.user);
         return this.http.put(this.url+'users/edit/'+this.user._id, {_id: this.user._id, status: "offline"}, {headers: headers});
     }
 

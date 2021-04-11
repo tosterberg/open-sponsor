@@ -1,22 +1,21 @@
 /*
-
+    Main location for backend messaging
 */
 const express = require('express');
-const message = express.Router();
+const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const Message = require('../models/message');
 
-
-
 //  Post chat message
-message.post('/chatmessage', (req, res, next) => {
+router.post('/chatmessage', (req, res, next) => {
     let newMsg = new Message({
         key: req.body.key,
         username: req.body.username,
         message: req.body.message,
-        timestamp: req.body.timestamp
+        timestamp: req.body.timestamp,
+        datetime: req.body.datetime
     });
 
     Message.addMessage(newMsg, (err, msg) => {
@@ -28,10 +27,24 @@ message.post('/chatmessage', (req, res, next) => {
     });
 });
 
+//  Get the current conversation from chatroom
+router.get('/chatmessage', (req, res, next) => {
+    Message.getCurrentConv(req, (err, msg) => {
+        if(err){
+            res.json({success: false, msg:'Failed to retrieve messages'});
+        } else {
+            res.json({
+                success: true,
+                messages: msg.messages
+            });
+        }
+    });
+});
+
 //  **PROTECTED** Chatroom
 
-message.get('/chatroom', passport.authenticate('jwt', {session:false}), (req, res, next) => {
+router.get('/chatroom', passport.authenticate('jwt', {session:false}), (req, res, next) => {
     res.json({user: req.user});
 });
 
-module.exports = message;
+module.exports = router;

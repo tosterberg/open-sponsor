@@ -1,5 +1,5 @@
 /*
-    Models
+    User Models
 */
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');

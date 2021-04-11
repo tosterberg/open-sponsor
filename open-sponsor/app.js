@@ -10,7 +10,17 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const passport = require('passport');
 const mongoose = require('mongoose');
-const config = require('./config/database')
+const config = require('./config/database');
+const http = require('http');
+const socketio = require('socket.io');
+
+const server = http.createServer(express);
+const io = socketio(server);
+
+//  Use socket.io when a client connects
+io.on('connection', socket => {
+    console.log('new websockets connection...');
+});
 
 //  Use mongoose middleware as API for database
 mongoose.connect(config.database);
@@ -58,8 +68,8 @@ app.get('/', (req, res) => {
 
 //  Re-route all unexpected routes to home
 app.get('*', (req, res) => {
-    res.sendFile('http://localhost:4200/');
-    //res.sendFile(path.join(__dirname, 'public/index.html'));
+    //res.sendFile('http://localhost:4200/');
+    res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 //  Start Server

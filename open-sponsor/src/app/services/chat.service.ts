@@ -1,41 +1,48 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { ChatMessage } from '../models/chat-message.model';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { User } from '../models/user.model';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
-    user: any;
-    chatMessages: Observable<ChatMessage[]>;
-    chatMessage: ChatMessage = {};
-    username: any;
+    user: User;
+    chatMessage!: ChatMessage;
+    chatMessages: ChatMessage[];
+    url: String = 'http://localhost:3000/';
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private http: HttpClient) {
       this.authService.loadUser();
-      this.chatMessages = new Observable;
       this.user = this.authService.user;
+      this.chatMessage = new ChatMessage;
+      this.chatMessages = [];   //set to load the most recent 25 Messages
   }
 
   sendMessage(msg: string) {
       const timestamp = this.getTimeStamp();
-      this.chatMessages = this.getMessages();
-      /*
-      this.chatMessages.push({
-          username: this.user.username,
-          message: msg,
-          timestamp: timestamp
-      });
-      */
-      console.log('sendMessages(msg)', msg, this.authService.user, timestamp);
+      const chatMessage = new ChatMessage();
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
+
+      chatMessage.timestamp = timestamp;
+      chatMessage.username = this.user.username;
+      chatMessage.message = msg;
+      chatMessage.datetime = Date.now();
+      //this.chatMessage.key = [{}]; //replace with all online user id's when available
+
+      console.log(chatMessage);
+      console.log(this.url+'messages/chatmessage');
+
+      return this.http.post(this.url+'messages/chatmessage', chatMessage, {headers: headers});
   }
 
-  getMessages(): Observable<ChatMessage[]> {
-      console.log('getMessages()');
-      //query to create our message feed binding
-      return this.chatMessages;
+  getMessages() {
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
+      return this.http.get(this.url+'messages/chatmessage', {headers: headers});
   }
 
   getTimeStamp() {
