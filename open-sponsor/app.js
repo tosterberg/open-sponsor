@@ -1,6 +1,6 @@
 /*
     Main Server Entrypoint
-    Launch using: node app
+    Launch using: node app or ng start
     Author: Tyler Osterberg
     Date: 3/23/2021
 */

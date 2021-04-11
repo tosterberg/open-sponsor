@@ -38,6 +38,14 @@ export class AuthService {
         return this.user;
     }
 
+    getAllOnlineUsers(){
+        let headers = new HttpHeaders();
+        this.loadToken();
+        headers = headers.append('Content-Type', 'application/json');
+        headers = headers.append('Authorization', this.authToken);
+        return this.http.get(this.url+'users/chatroom/', {headers: headers});
+    }
+
     updateUser(user: User){
         let headers = new HttpHeaders();
         this.loadToken();

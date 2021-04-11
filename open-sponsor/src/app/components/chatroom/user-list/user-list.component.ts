@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 
 @Component({
@@ -7,16 +7,26 @@ import { AuthService } from '../../../services/auth.service';
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
-    user!: any;
+    users!: Array<any>;
 
   constructor(private authService: AuthService) {
   }
 
-//Needs extended to show everyone currently logged in
   ngOnInit(): void {
-      this.authService.getProfile().subscribe((user: any) => {
-          if(user.user !== null || user.user !== undefined){
-              this.user = user.user;
+      this.getLoggedInUsers();
+  }
+
+/*
+  ngOnChanges() {
+      this.getLoggedInUsers();
+  }
+*/
+  //Needs extended to show everyone currently logged in
+  getLoggedInUsers() {
+      this.authService.getAllOnlineUsers().subscribe((user: any) => {
+          if(user.user !== null){
+              this.users = user.users;
+              console.log(this.users);
           }
       },
        err => {

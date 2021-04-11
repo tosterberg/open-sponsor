@@ -1,6 +1,5 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { ChatService } from '../../../services/chat.service';
-//import { ChatMessage } from '../../../models/chat-message.model';
 
 @Component({
   selector: 'app-chat-feed',

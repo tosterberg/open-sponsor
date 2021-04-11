@@ -8,6 +8,7 @@ const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const User = require('../models/user');
 const Message = require('../models/message');
+
 //  Register
 router.post('/register', (req, res, next) => {
     let newUser = new User({
@@ -22,7 +23,7 @@ router.post('/register', (req, res, next) => {
         sponsee: req.body.sponsee,
         bio: req.body.bio
     });
-
+    //  Query to create a new user record
     User.addUser(newUser, (err, user) => {
         if(err){
             res.json({success: false, msg:'Failed to register user'});
@@ -32,6 +33,7 @@ router.post('/register', (req, res, next) => {
     });
 });
 
+//  Query to edit the logged in users profile
 router.put('/edit/:id', (req, res, next) => {
     User.updateUser(req.body, (err, user) => {
         if(err){
@@ -42,7 +44,7 @@ router.put('/edit/:id', (req, res, next) => {
     });
 });
 
-//  Authenticate
+//  Authenticate based on username and password
 router.post('/authenticate', (req, res, next) => {
     const username = req.body.username;
     const password = req.body.password;
@@ -93,7 +95,22 @@ router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res,
 //  **PROTECTED** Profile
 //  Will require auth token in header of get request to retrieve who is online
 router.get('/chatroom', passport.authenticate('jwt', {session:false}), (req, res, next) => {
-    res.json([{username: req.user.username}]);
+    User.getOnlineUsers({status: 'online'}, (err, users) => {
+        if(err) throw err;
+        if(!users){
+            return res.json({success: false, msg: 'Error in retrieving online users'});
+        }
+        //  Only return the usernames from the query
+        const onlineUsers = [];
+        for (var i = 0; i < users.length; i++) {
+            onlineUsers[i] = users[i].username
+        }
+
+        return res.json({
+            success: true,
+            users: users
+        });
+    });
 });
 
 module.exports = router;

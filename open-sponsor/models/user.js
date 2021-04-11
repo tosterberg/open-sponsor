@@ -78,7 +78,6 @@ module.exports.addUser = function(newUser, callback){
 
 //  Update individual user profile based on object _id from MongoDB
 module.exports.updateUser = function(req, callback){
-    console.log(req._id, req.status);
     User.findByIdAndUpdate(req._id, req, callback);
 }
 
@@ -91,6 +90,15 @@ module.exports.comparePassword = function(candidatePassword, hash, callback){
 }
 
 // Return list of users that are online for chatroom
-module.exports.getOnlineUsers = function(req, callback){
-    User.find({status: 'online'}, req, callback);
+module.exports.getOnlineUsers = function(req, callback) {
+    User.find(req, callback)
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving the online users."
+      });
+    });
 }

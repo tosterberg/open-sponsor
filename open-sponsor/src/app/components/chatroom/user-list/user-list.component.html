@@ -1,8 +1,6 @@
 <div class="">
-    <div *ngIf="user;" class="some-css">
-        <span>@{{ user.username }}</span>
-        <!--
-        For loop over currently logged in users
-        -->
+    <h5>User List</h5>
+    <div *ngFor="let user of users" class="user">
+        <em>@{{ user.username }}</em>
     </div>
 </div>
