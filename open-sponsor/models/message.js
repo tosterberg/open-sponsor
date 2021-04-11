@@ -42,7 +42,7 @@ module.exports.getMessagesByUsername = function(username, callback){
 }
 
 module.exports.getCurrentConv = function(req, callback){
-    Message.find({}, function ( err, msg ) {}).sort({datetime: 'descending'}).limit(25);
+    Message.find({}, callback).sort({_id: 'descending'}).limit(10);
 }
 
 // Write function to add message to persistant storage

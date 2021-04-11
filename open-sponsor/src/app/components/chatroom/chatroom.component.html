@@ -1,11 +1,19 @@
 <h2>Chatroom</h2>
 <div class="main-chat jumbotron">
-    <div class="user-list-wrapper">
-<app-user-list></app-user-list>
-    </div>
-    <div #scroller class="feed-wrapper">
-        <app-chat-feed></app-chat-feed>
-    </div>
+    <table class="table">
+        <tr>
+            <td>
+                <div class="user-list-wrapper">
+                    <app-user-list></app-user-list>
+                </div>
+            </td>
+            <td>
+                <div #scroller class="feed-wrapper">
+                    <app-chat-feed></app-chat-feed>
+                </div>
+            </td>
+        </tr>
+    </table>
     <div class="chat-form-wrapper">
         <app-chat-form></app-chat-form>
     </div>

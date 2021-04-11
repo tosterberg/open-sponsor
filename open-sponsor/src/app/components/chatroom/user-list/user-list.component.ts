@@ -26,7 +26,6 @@ export class UserListComponent implements OnInit {
       this.authService.getAllOnlineUsers().subscribe((user: any) => {
           if(user.user !== null){
               this.users = user.users;
-              console.log(this.users);
           }
       },
        err => {

@@ -1,10 +1,6 @@
 <div class="feed">
-    Feed
-    <!--
-    <app-chat-message [chatMessage]=message></app-chat-message>
-
-    <div *ngFor="let message of feed | async" class="message">
-        <app-chat-message [chatMessage]=message></app-chat-message>
+    <div *ngFor="let messages of feed" class="messages">
+        <h6>{{ messages.message }}</h6>
+        <em>@{{ messages.username }}</em>
     </div>
-    -->
 </div>

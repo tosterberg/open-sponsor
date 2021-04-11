@@ -50,7 +50,7 @@ lengthInUtf8Bytes(str: string) {
   getMessages() {
       let headers = new HttpHeaders();
       headers = headers.append('Content-Type', 'application/json');
-      return this.http.get(this.url+'messages/chatmessage', {headers: headers}).subscribe();
+      return this.http.get(this.url+'messages/chatmessage', {headers: headers});
   }
 
   getTimeStamp() {

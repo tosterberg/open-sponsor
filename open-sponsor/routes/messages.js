@@ -35,14 +35,13 @@ router.get('/chatmessage', (req, res, next) => {
         } else {
             res.json({
                 success: true,
-                messages: msg.messages
+                messages: msg
             });
         }
     });
 });
 
 //  **PROTECTED** Chatroom
-
 router.get('/chatroom', passport.authenticate('jwt', {session:false}), (req, res, next) => {
     res.json({user: req.user});
 });

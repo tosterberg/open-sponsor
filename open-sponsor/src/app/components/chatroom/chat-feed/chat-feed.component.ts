@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ChatService } from '../../../services/chat.service';
 
 @Component({
@@ -6,17 +6,20 @@ import { ChatService } from '../../../services/chat.service';
   templateUrl: './chat-feed.component.html',
   styleUrls: ['./chat-feed.component.css']
 })
-export class ChatFeedComponent implements OnInit, OnChanges {
+export class ChatFeedComponent implements OnInit {
     feed: any;
 
   constructor(private chat: ChatService) { }
 
   ngOnInit(): void {
-      this.feed = this.chat.getMessages();
+      this.chat.getMessages().subscribe((feed: any) => {
+          if(feed.messages !== null){
+              this.feed = feed.messages.slice().reverse();
+          }
+      },
+       err => {
+           console.log(err);
+           return false;
+       });
   }
-
-  ngOnChanges() {
-      this.feed = this.chat.getMessages();
-  }
-
 }
