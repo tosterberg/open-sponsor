@@ -93,12 +93,10 @@ module.exports.comparePassword = function(candidatePassword, hash, callback){
 module.exports.getOnlineUsers = function(req, callback) {
     User.find(req, callback)
     .then(data => {
-      res.send(data);
+        callback.send(data);
+        resolve();
     })
     .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving the online users."
-      });
+          console.log('error: ', err);
     });
 }
