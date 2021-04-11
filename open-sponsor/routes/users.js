@@ -90,4 +90,10 @@ router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res,
     res.json({user: req.user});
 });
 
+//  **PROTECTED** Profile
+//  Will require auth token in header of get request to retrieve who is online
+router.get('/chatroom', passport.authenticate('jwt', {session:false}), (req, res, next) => {
+    res.json([{username: req.user.username}]);
+});
+
 module.exports = router;

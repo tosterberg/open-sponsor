@@ -25,24 +25,32 @@ export class ChatService {
       const timestamp = this.getTimeStamp();
       const chatMessage = new ChatMessage();
       let headers = new HttpHeaders();
-      headers = headers.append('Content-Type', 'application/json');
+
+      headers = headers.set('Content-Type', 'application/json');
 
       chatMessage.timestamp = timestamp;
       chatMessage.username = this.user.username;
       chatMessage.message = msg;
       chatMessage.datetime = Date.now();
+
       //this.chatMessage.key = [{}]; //replace with all online user id's when available
 
-      console.log(chatMessage);
-      console.log(this.url+'messages/chatmessage');
-
-      return this.http.post(this.url+'messages/chatmessage', chatMessage, {headers: headers});
+      return this.http.post(this.url+'messages/chatmessage', JSON.stringify(chatMessage), {headers: headers}).subscribe();
   }
+
+//Testing only for Content-Length param
+/*
+lengthInUtf8Bytes(str: string) {
+  // Matches only the 10.. bytes that are non-initial characters in a multi-byte sequence.
+  var m = encodeURIComponent(str).match(/%[89ABab]/g);
+  return str.length + (m ? m.length : 0);
+}
+*/
 
   getMessages() {
       let headers = new HttpHeaders();
       headers = headers.append('Content-Type', 'application/json');
-      return this.http.get(this.url+'messages/chatmessage', {headers: headers});
+      return this.http.get(this.url+'messages/chatmessage', {headers: headers}).subscribe();
   }
 
   getTimeStamp() {
