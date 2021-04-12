@@ -1,0 +1,142 @@
+[{
+  "_id": {
+    "$oid": "6071f08c4bfe875394f4d4e6"
+  },
+  "lfsponsor": true,
+  "sponsoring": true,
+  "name": "test",
+  "email": "testty@test.com",
+  "username": "test",
+  "password": "$2a$10$1lx8aExYQKDQ/eG4sb.q5uBszvkyXoC76T9sDoM6BxhbxPgUyV/2y",
+  "status": "online",
+  "sponsee": [
+    {}
+  ],
+  "reported": [],
+  "__v": 0,
+  "bio": "I don't like this biography"
+},{
+  "_id": {
+    "$oid": "6071f2dc1a7a3b4970c0028c"
+  },
+  "lfsponsor": false,
+  "sponsoring": true,
+  "name": "john",
+  "email": "jdoe@gmail.com",
+  "username": "john",
+  "password": "$2a$10$E2BvH6dhh88bUxqwnKusIOLm4G3EWh/7Frr8sDQTBHzUXExEKVV6G",
+  "status": "online",
+  "sponsee": [
+    {}
+  ],
+  "reported": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6071f2fb1a7a3b4970c0028d"
+  },
+  "lfsponsor": true,
+  "sponsoring": false,
+  "name": "joe",
+  "email": "joe@gmail.com",
+  "username": "joe",
+  "password": "$2a$10$gT0E8JHVVodwhsx.Ere0uean5zifGm54zAqs/8Zokmnp5HuQMfs6K",
+  "status": "offline",
+  "sponsee": [
+    {}
+  ],
+  "reported": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6071f53b1a7a3b4970c0028e"
+  },
+  "lfsponsor": false,
+  "sponsoring": true,
+  "name": "longbio",
+  "email": "lb@gmail.com",
+  "username": "longbio",
+  "password": "$2a$10$wZpzozdmlmd8TtZHBl/rEOkcSRhgpPS/B89anZeZlWWRFD6BfLK0C",
+  "status": "online",
+  "sponsee": [
+    {}
+  ],
+  "reported": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6071f5b61a7a3b4970c0028f"
+  },
+  "lfsponsor": true,
+  "sponsoring": false,
+  "name": "retestbio",
+  "email": "rtb@gmail.com",
+  "username": "retestbio",
+  "password": "$2a$10$uZoO18iaEatlUuke6Oeowe906GqqqRQTbr6JTr3MrdI7shOtvRCIO",
+  "status": "offline",
+  "sponsee": [
+    {}
+  ],
+  "reported": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6071f6161a7a3b4970c00290"
+  },
+  "lfsponsor": true,
+  "sponsoring": false,
+  "name": "asdfasdf",
+  "email": "asdf@gmail.com",
+  "username": "asdfasdf",
+  "password": "$2a$10$UUbO5vucrcoO0R.jhxY8S./dZJrhmv5yym5SJdcezj7RfVfWWxXTK",
+  "status": "offline",
+  "sponsee": [
+    {}
+  ],
+  "reported": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6071f72c1a7a3b4970c00291"
+  },
+  "lfsponsor": true,
+  "sponsoring": false,
+  "name": "testnew",
+  "email": "testty@test.com",
+  "username": "testnew",
+  "password": "$2a$10$haUF8jvCoCplXnTESk9P/.1Jba9QSw68bLypPk3ioGsQZy.C18a46",
+  "status": "online",
+  "sponsee": [],
+  "reported": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6071f7e0d37a0929cccb5fb3"
+  },
+  "lfsponsor": true,
+  "sponsoring": false,
+  "name": "testagain",
+  "email": "ta@gamil.com",
+  "username": "testagain",
+  "password": "$2a$10$Kj0QyEQkKf6oSw/OkFh5k.hiVzM.s1AVNaSVfPIkZDbaFdSn9lhLu",
+  "status": "offline",
+  "sponsee": [],
+  "bio": "longer\n\nbio\nagain",
+  "reported": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60722cabab88b765c86bec75"
+  },
+  "lfsponsor": false,
+  "sponsoring": true,
+  "name": "Tyler T Osterberg",
+  "email": "tosterberg@regis.edu",
+  "username": "tosterberg",
+  "password": "$2a$10$BES6MlmtD8uGUbOB4D8QjOJ9cRI4.gYIAk8lmC26VdZCqjdtfK3uG",
+  "status": "offline",
+  "sponsee": [],
+  "bio": "asdfasdfasdf",
+  "reported": [],
+  "__v": 0
+}]
