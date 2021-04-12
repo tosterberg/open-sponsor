@@ -1,6 +1,9 @@
-<div class="">
+<div class="d-flex flex-column p-3 bg-light" style="width: 180px;">
     <h5>User List</h5>
-    <div *ngFor="let user of users" class="user">
-        <em>@{{ user.username }}</em>
-    </div>
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li *ngFor="let user of users" class="nav-item user">
+            <em>@{{ user.username }}</em>
+            <br>
+        </li>
+    </ul>
 </div>

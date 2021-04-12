@@ -1,6 +1,12 @@
-<div class="feed">
+<div class="feed card" style="width: 24rem;">
     <div *ngFor="let messages of feed" class="messages">
-        <h6>{{ messages.message }}</h6>
-        <em>@{{ messages.username }}</em>
+        <div class="card-header">
+            <div class="text-end">
+                <em>@{{ messages.username }}</em>
+            </div>
+        </div>
+        <div class="card-body">
+            <h6>{{ messages.message }}</h6>
+        </div>
     </div>
 </div>
