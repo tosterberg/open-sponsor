@@ -46,6 +46,22 @@ export class AuthService {
         return this.http.get(this.url+'users/chatroom/', {headers: headers});
     }
 
+    getAllSponsoringUsers(){
+        let headers = new HttpHeaders();
+        this.loadToken();
+        headers = headers.append('Content-Type', 'application/json');
+        headers = headers.append('Authorization', this.authToken);
+        return this.http.get(this.url+'users/sponsors/', {headers: headers});
+    }
+
+    getAllSponseeUsers(){
+        let headers = new HttpHeaders();
+        this.loadToken();
+        headers = headers.append('Content-Type', 'application/json');
+        headers = headers.append('Authorization', this.authToken);
+        return this.http.get(this.url+'users/sponsees/', {headers: headers});
+    }
+
     updateUser(user: User){
         let headers = new HttpHeaders();
         this.loadToken();

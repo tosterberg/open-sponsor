@@ -1,0 +1,18 @@
+<div class="text-center">
+    <a class="btn btn-primary text-white" (click)=searchSponsor()>Find Sponsor's</a>&nbsp;<a class="btn btn-secondary text-white" (click)=searchSponsee()>Find Sponsee's</a>
+</div>
+<div *ngIf="search !== [{}]">
+    <br>
+    <div class="search card" style="width: 56rem;">
+        <div *ngFor="let users of search" class="users">
+            <div class="card-header">
+                <div class="text-front">
+                    <em>{{ users.username }}</em>
+                </div>
+            </div>
+            <div class="card-body">
+                <h6>{{ users.bio }}</h6>
+            </div>
+        </div>
+    </div>
+</div>

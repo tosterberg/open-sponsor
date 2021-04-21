@@ -1,5 +1,5 @@
 export class ChatMessage {
-    key?: [{}];
+    key?: string;
     _id?: string;
     username?: string;
     message?: string;

@@ -114,4 +114,44 @@ router.get('/chatroom', passport.authenticate('jwt', {session:false}), (req, res
     });
 });
 
+router.get('/sponsors', passport.authenticate('jwt', {session:false}), (req, res, next) => {
+    User.getQueryUsers({sponsoring: true}, (err, users) => {
+        try {
+            if(err) throw err;
+            if(!users){
+                return res.json({success: false, msg: 'Error in retrieving users'});
+            }
+            return res.json({
+                success: true,
+                msg: 'Success in retrieving search for users',
+                users: users
+            });
+        } catch (err) {
+            console.error('Error: ', err);
+            return res.json({success: false, msg: 'Error in retrieving users'});
+        }
+
+    });
+});
+
+router.get('/sponsees', passport.authenticate('jwt', {session:false}), (req, res, next) => {
+    User.getQueryUsers({lfsponsor: true}, (err, users) => {
+        try {
+            if(err) throw err;
+            if(!users){
+                return res.json({success: false, msg: 'Error in retrieving users'});
+            }
+            return res.json({
+                success: true,
+                msg: 'Success in retrieving search for users',
+                users: users
+            });
+        } catch (err) {
+            console.error('Error: ', err);
+            return res.json({success: false, msg: 'Error in retrieving users'});
+        }
+
+    });
+});
+
 module.exports = router;

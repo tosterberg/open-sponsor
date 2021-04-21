@@ -89,10 +89,11 @@ module.exports.comparePassword = function(candidatePassword, hash, callback){
     });
 }
 
-// Return list of users that are online for chatroom
-module.exports.getOnlineUsers = function(req, callback) {
+// Return list of users that match query
+module.exports.getQueryUsers = function(req, callback) {
     User.find(req, (err, data) => {
         if(err) throw err;
+        console.log(data);
         return callback(null, data);
     });
 }

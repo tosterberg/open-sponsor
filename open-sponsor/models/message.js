@@ -8,8 +8,8 @@ const config = require('../config/database');
 //  Message Schema
 const MessageSchema = mongoose.Schema({
     key: {
-        type: [{ username: String }],
-        required: false
+        type: String,
+        required: true
     },
     username: {
         type: String,
@@ -41,8 +41,13 @@ module.exports.getMessagesByUsername = function(username, callback){
     Message.findOne(query, callback);
 }
 
+module.exports.getPrivateConv = function(room, callback){
+    const query = {key: room};
+    Message.findOne(query, callback);
+}
+
 module.exports.getCurrentConv = function(req, callback){
-    Message.find({}, callback).sort({_id: 'descending'}).limit(10);
+    Message.find({key: 'chatroom'}, callback).sort({_id: 'descending'}).limit(10);
 }
 
 // Write function to add message to persistant storage

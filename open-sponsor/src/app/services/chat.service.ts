@@ -21,13 +21,14 @@ export class ChatService {
       this.chatMessages = [];   //set to load the most recent 25 Messages
   }
 
-  sendMessage(msg: string) {
+  sendMessage(msg: string, room: string) {
       const timestamp = this.getTimeStamp();
       const chatMessage = new ChatMessage();
       let headers = new HttpHeaders();
 
       headers = headers.set('Content-Type', 'application/json');
 
+      chatMessage.key = room;
       chatMessage.timestamp = timestamp;
       chatMessage.username = this.user.username;
       chatMessage.message = msg;

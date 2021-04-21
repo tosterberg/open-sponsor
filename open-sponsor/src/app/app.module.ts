@@ -27,6 +27,7 @@ import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth.guard'
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { ChatService } from './services/chat.service';
+import { UserSearchComponent } from './components/user-search/user-search.component';
 
 
 //  Create route map for moving around the url
@@ -37,7 +38,7 @@ const appRoutes: Routes = [
     {path:'login', component: LoginComponent},
     {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
     {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
-    {path:'chatroom', component: ChatroomComponent, canActivate:[AuthGuard]},
+    {path:'chatroom', component: ChatroomComponent, canActivate:[AuthGuard]}
 ]
 
 /*
@@ -60,7 +61,8 @@ const appRoutes: Routes = [
     UserListComponent,
     ChatFeedComponent,
     ChatMessageComponent,
-    ChatFormComponent
+    ChatFormComponent,
+    UserSearchComponent
   ],
   imports: [
     BrowserModule,
