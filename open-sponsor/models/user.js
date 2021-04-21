@@ -91,12 +91,8 @@ module.exports.comparePassword = function(candidatePassword, hash, callback){
 
 // Return list of users that are online for chatroom
 module.exports.getOnlineUsers = function(req, callback) {
-    User.find(req, callback)
-    .then(data => {
-        callback.send(data);
-        resolve();
-    })
-    .catch(err => {
-          console.log('error: ', err);
+    User.find(req, (err, data) => {
+        if(err) throw err;
+        return callback(null, data);
     });
 }

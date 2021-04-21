@@ -35,9 +35,9 @@ const appRoutes: Routes = [
     {path:'', component: HomeComponent},
     {path:'register', component: RegisterComponent},
     {path:'login', component: LoginComponent},
-    {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
     {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
-    {path:'chatroom', component: ChatroomComponent, canActivate:[AuthGuard]}
+    {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
+    {path:'chatroom', component: ChatroomComponent, canActivate:[AuthGuard]},
 ]
 
 /*

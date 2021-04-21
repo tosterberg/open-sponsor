@@ -96,20 +96,21 @@ router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res,
 //  Will require auth token in header of get request to retrieve who is online
 router.get('/chatroom', passport.authenticate('jwt', {session:false}), (req, res, next) => {
     User.getOnlineUsers({status: 'online'}, (err, users) => {
-        if(err) throw err;
-        if(!users){
+        try {
+            if(err) throw err;
+            if(!users){
+                return res.json({success: false, msg: 'Error in retrieving online users'});
+            }
+            return res.json({
+                success: true,
+                msg: 'Success in retrieving online users',
+                users: users
+            });
+        } catch (err) {
+            console.error('Error: ', err);
             return res.json({success: false, msg: 'Error in retrieving online users'});
         }
-        //  Only return the usernames from the query
-        const onlineUsers = [];
-        for (var i = 0; i < users.length; i++) {
-            onlineUsers[i] = users[i].username
-        }
 
-        return res.json({
-            success: true,
-            users: users
-        });
     });
 });
 
