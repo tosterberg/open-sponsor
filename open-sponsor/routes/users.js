@@ -95,7 +95,7 @@ router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res,
 //  **PROTECTED** Profile
 //  Will require auth token in header of get request to retrieve who is online
 router.get('/chatroom', passport.authenticate('jwt', {session:false}), (req, res, next) => {
-    User.getOnlineUsers({status: 'online'}, (err, users) => {
+    User.getQueryUsers({status: 'online'}, (err, users) => {
         try {
             if(err) throw err;
             if(!users){

@@ -35,6 +35,10 @@
                 <td><input type="checkbox" [(ngModel)]="user.sponsoring" name="user.sponsoring" class="form-control-checkbox disable"></td>
             </tr>
             <tr>
+                <td>Sponsor: {{ user.sponsor }} &nbsp;&nbsp;</td>
+                <button (click)="onRemoveSponsor()" class="btn btn-primary">Remove Sponsor?</button>
+            </tr>
+            <tr *ngIf="user.sponsor">
                 <td>Biography: </td>
                 <td><textarea [(ngModel)]="user.bio" name="user.bio" rows="5" cols="80"></textarea></td>
             </tr>

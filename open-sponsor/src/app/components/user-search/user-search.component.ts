@@ -9,14 +9,17 @@ import { AuthService } from '../../services/auth.service';
 export class UserSearchComponent implements OnInit {
 
     search: any;
+    searchType: string;
 
   constructor(private authService: AuthService) {
+      this.searchType = 'none';
   }
 
   ngOnInit(): void {
   }
 
   searchSponsor(){
+      this.searchType = 'sponsor';
       this.authService.getAllSponsoringUsers().subscribe((search: any) => {
           if(search.users !== null){
               this.search = search.users.slice().reverse();
@@ -30,6 +33,7 @@ export class UserSearchComponent implements OnInit {
 
 
   searchSponsee(){
+      this.searchType = 'sponsee';
       this.authService.getAllSponseeUsers().subscribe((search: any) => {
           if(search.users !== null){
               this.search = search.users.slice().reverse();

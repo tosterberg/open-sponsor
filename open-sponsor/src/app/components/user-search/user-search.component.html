@@ -1,7 +1,7 @@
 <div class="text-center">
     <a class="btn btn-primary text-white" (click)=searchSponsor()>Find Sponsor's</a>&nbsp;<a class="btn btn-secondary text-white" (click)=searchSponsee()>Find Sponsee's</a>
 </div>
-<div *ngIf="search !== [{}]">
+<div *ngIf="search">
     <br>
     <div class="search card" style="width: 56rem;">
         <div *ngFor="let users of search" class="users">
@@ -12,6 +12,14 @@
             </div>
             <div class="card-body">
                 <h6>{{ users.bio }}</h6>
+            </div>
+            <div>
+                <div *ngIf="searchType==='sponsor'" class="text-end">
+                    <button class="btn btn-primary text-end">Sponsor them!</button>
+                </div>
+                <div *ngIf="searchType==='sponsee'" class="text-end">
+                    <button class="btn btn-primary text-end">Sponsor me?</button>
+                </div>
             </div>
         </div>
     </div>

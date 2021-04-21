@@ -48,4 +48,6 @@ export class ProfileComponent implements OnInit {
       });
       this.edit = false;
   }
+
+  onRemoveSponsor(){}
 }

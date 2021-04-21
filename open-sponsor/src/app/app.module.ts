@@ -20,6 +20,9 @@ import { UserListComponent } from './components/chatroom/user-list/user-list.com
 import { ChatFeedComponent } from './components/chatroom/chat-feed/chat-feed.component';
 import { ChatMessageComponent } from './components/chatroom/chat-message/chat-message.component';
 import { ChatFormComponent } from './components/chatroom/chat-form/chat-form.component';
+import { UserSearchComponent } from './components/user-search/user-search.component';
+import { PersonalMessagesComponent } from './components/personal-messages/personal-messages.component';
+import { ConnectUsersComponent } from './components/connect-users/connect-users.component';
 
 //import services
 import { ValidateService } from './services/validate.service';
@@ -27,7 +30,11 @@ import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth.guard'
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { ChatService } from './services/chat.service';
-import { UserSearchComponent } from './components/user-search/user-search.component';
+import { ConnectService } from './services/connect.service';
+import { CreateLearningComponent } from './components/create-learning/create-learning.component';
+import { EditLearningComponent } from './components/edit-learning/edit-learning.component';
+import { SearchLearningComponent } from './components/search-learning/search-learning.component';
+
 
 
 //  Create route map for moving around the url
@@ -62,7 +69,12 @@ const appRoutes: Routes = [
     ChatFeedComponent,
     ChatMessageComponent,
     ChatFormComponent,
-    UserSearchComponent
+    UserSearchComponent,
+    PersonalMessagesComponent,
+    ConnectUsersComponent,
+    CreateLearningComponent,
+    EditLearningComponent,
+    SearchLearningComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +89,8 @@ const appRoutes: Routes = [
       AuthService,
       JwtHelperService,
       AuthGuard,
-      ChatService
+      ChatService,
+      ConnectService
   ],
   bootstrap: [AppComponent]
 })

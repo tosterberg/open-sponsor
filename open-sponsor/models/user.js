@@ -93,7 +93,6 @@ module.exports.comparePassword = function(candidatePassword, hash, callback){
 module.exports.getQueryUsers = function(req, callback) {
     User.find(req, (err, data) => {
         if(err) throw err;
-        console.log(data);
         return callback(null, data);
     });
 }
