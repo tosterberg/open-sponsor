@@ -38,6 +38,11 @@ export class AuthService {
         return this.user;
     }
 
+    getMyUsername(){
+        this.loadUser();
+        return this.user.username;
+    }
+
     getAllOnlineUsers(){
         let headers = new HttpHeaders();
         this.loadToken();

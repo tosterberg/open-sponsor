@@ -1,5 +1,5 @@
 <div class="text-center">
-    <a class="btn btn-primary text-white" (click)=searchSponsor()>Find Sponsor's</a>&nbsp;<a class="btn btn-secondary text-white" (click)=searchSponsee()>Find Sponsee's</a>
+    <a *ngIf="user.lfsponsor" class="btn btn-primary text-white" (click)=searchSponsor()>Find a Sponsor</a>&nbsp;<a *ngIf="user.sponsoring" class="btn btn-secondary text-white" (click)=searchSponsee()>Find Sponsees</a>
 </div>
 <div *ngIf="search">
     <br>
@@ -15,10 +15,10 @@
             </div>
             <div>
                 <div *ngIf="searchType==='sponsor'" class="text-end">
-                    <button class="btn btn-primary text-end">Sponsor them!</button>
+                    <button class="btn btn-primary text-end">Sponsor me?</button>
                 </div>
                 <div *ngIf="searchType==='sponsee'" class="text-end">
-                    <button class="btn btn-primary text-end">Sponsor me?</button>
+                    <button class="btn btn-primary text-end">Sponsor them!</button>
                 </div>
             </div>
         </div>

@@ -8,6 +8,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class UserSearchComponent implements OnInit {
 
+    user !: any;
     search: any;
     searchType: string;
 
@@ -16,6 +17,7 @@ export class UserSearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
+      this.user = this.authService.getUser();
   }
 
   searchSponsor(){

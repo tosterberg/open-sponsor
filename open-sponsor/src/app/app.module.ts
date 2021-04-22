@@ -50,6 +50,7 @@ const appRoutes: Routes = [
 
 /*
     declarations: components,
+    
     imports: modules,
     providers: services,
     bootstrap: Init component
