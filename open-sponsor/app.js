@@ -37,8 +37,9 @@ mongoose.connection.on('error', (err) => {
 //  Intialize app variable
 const app = express();
 
-const users = require('./routes/users')
-const messages = require('./routes/messages')
+const users = require('./routes/users');
+const messages = require('./routes/messages');
+const learnings = require('./routes/learnings');
 
 //  Port Number
 const port = 3000;
@@ -57,6 +58,7 @@ require('./config/passport')(passport);
 
 app.use('/users', users);
 app.use('/messages', messages);
+app.use('/learn', learnings);
 
 //  Set static folder
 app.use(express.static(path.join(__dirname, 'public')));

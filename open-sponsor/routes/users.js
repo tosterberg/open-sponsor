@@ -85,15 +85,13 @@ router.post('/authenticate', (req, res, next) => {
     });
 });
 
-//  **PROTECTED** Profile
-//  Will require auth token in header of get request to retrieve profile data
+//  **PROTECTED** Section below requires JWT Auth to access API
+//  Will require auth token in header and passport.authenticate
 router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res, next) => {
     //initial test
     res.json({user: req.user});
 });
 
-//  **PROTECTED** Profile
-//  Will require auth token in header of get request to retrieve who is online
 router.get('/chatroom', passport.authenticate('jwt', {session:false}), (req, res, next) => {
     User.getQueryUsers({status: 'online'}, (err, users) => {
         try {
@@ -149,6 +147,26 @@ router.get('/sponsees', passport.authenticate('jwt', {session:false}), (req, res
         } catch (err) {
             console.error('Error: ', err);
             return res.json({success: false, msg: 'Error in retrieving users'});
+        }
+
+    });
+});
+
+router.get('/:username', passport.authenticate('jwt', {session:false}), (req, res, next) => {
+    User.getQueryUsers({username: req.params.username}, (err, users) => {
+        try {
+            if(err) throw err;
+            if(!users[0]){
+                return res.json({success: false, msg: 'Error in retrieving user'});
+            }
+            return res.json({
+                success: true,
+                msg: 'Success in retrieving user',
+                userId: users[0]._id
+            });
+        } catch (err) {
+            console.error('Error: ', err);
+            return res.json({success: false, msg: 'Error in retrieving user'});
         }
 
     });

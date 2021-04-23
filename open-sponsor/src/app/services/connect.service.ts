@@ -6,8 +6,12 @@ import { AuthService } from '../services/auth.service';
 })
 export class ConnectService {
     myUsername: any;
+    myRooms: Array<any>;
+    connectKeys: any;
 
   constructor(private auth: AuthService) {
+      this.myRooms = [];
+      this.myRooms.push('chatroom');
       this.myUsername = this.auth.getMyUsername();
   }
 
@@ -23,6 +27,11 @@ export class ConnectService {
       this.updateTheirSponsor(this.myUsername);
   }
 
+  getMyConnections(){
+      /** Create list of "rooms" for communication with connections */
+      console.log(this.connectKeys);
+  }
+
   sendSponsorRequest(username: string){
       /** Post request message to remote users requests */
       console.log(username);
@@ -34,12 +43,12 @@ export class ConnectService {
   }
 
   rejectSponsorRequest(){
-      /** Delete message */
+      /** Delete message and remove connectKeys */
       console.log("Rejecting sponsor request");
   }
 
   rejectSponseeRequest(){
-      /** Delete message */
+      /** Delete message and remove connectKeys */
       console.log("Rejecting sponsee request");
   }
 

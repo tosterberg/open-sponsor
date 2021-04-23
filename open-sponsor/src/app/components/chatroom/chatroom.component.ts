@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConnectService } from '../../services/connect.service';
 
 @Component({
   selector: 'app-chatroom',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatroomComponent implements OnInit {
 
-  constructor() { }
+    rooms: Array<string>;
+
+  constructor(private connect: ConnectService) {
+      this.rooms = [];
+  }
 
   ngOnInit(): void {
+      this.connect.getMyConnections();
   }
 
 }

@@ -13,7 +13,6 @@ router.post('/chatmessage', (req, res, next) => {
     let newMsg = new Message({
         key: req.body.key,
         username: req.body.username,
-
         message: req.body.message,
         timestamp: req.body.timestamp,
         datetime: req.body.datetime

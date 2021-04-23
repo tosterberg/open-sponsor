@@ -11,10 +11,9 @@ const Learn = require('../models/learn');
 //  Post chat message
 router.post('/learnings', (req, res, next) => {
     let newModule = new Learn({
-        key: req.body.key,
-        username: req.body.username,
-        sponsee: req.body.sponsee,
-        instructions: req.body.instructions,
+        creator: req.body.creator,
+        name: req.body.name,
+        step: req.body.step,
         timestamp: req.body.timestamp,
         datetime: req.body.datetime
     });

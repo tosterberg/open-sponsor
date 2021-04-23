@@ -7,15 +7,23 @@ const config = require('../config/database');
 
 //  Learning Schema
 const LearnSchema = mongoose.Schema({
-    username: {
+    creator: {
         type: String,
         required: true
     },
-    sponsee: {
+    name: {
         type: String,
         required: true
     },
-    instructions: {
+    step: {
+        type: String,
+        required: true
+    },
+    content: {
+        type: String,
+        required: true
+    },
+    stepwork: {
         type: String,
         required: true
     },
@@ -27,9 +35,9 @@ const LearnSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    stepwork: {
-        type: String,
-        required: false
+    master: {
+        type: Boolean,
+        required: true
     }
 });
 
@@ -37,6 +45,11 @@ const Learn = module.exports = mongoose.model('Learn', LearnSchema);
 
 //  exported functions for use outside of this file
 module.exports.getModuleByID = function(id, callback){
+    Learn.findById(id, callback);
+}
+
+module.exports.makeMyCopyModule = function(id, callback){
+    //  Update
     Learn.findById(id, callback);
 }
 

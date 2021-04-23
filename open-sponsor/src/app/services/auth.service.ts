@@ -38,6 +38,19 @@ export class AuthService {
         return this.user;
     }
 
+    getAnotherUsersIdByUsername(username: string){
+        let headers = new HttpHeaders();
+        this.loadToken();
+        headers = headers.append('Content-Type', 'application/json');
+        headers = headers.append('Authorization', this.authToken);
+        return this.http.get(this.url+'users/'+username, {headers: headers});
+    }
+
+    getMyUserId(){
+        this.loadUser();
+        return this.user._id;
+    }
+
     getMyUsername(){
         this.loadUser();
         return this.user.username;

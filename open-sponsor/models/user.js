@@ -90,8 +90,9 @@ module.exports.comparePassword = function(candidatePassword, hash, callback){
 }
 
 // Return list of users that match query
-module.exports.getQueryUsers = function(req, callback) {
-    User.find(req, (err, data) => {
+module.exports.getQueryUsers = function(query, callback) {
+    console.log(query);
+    User.find(query, (err, data) => {
         if(err) throw err;
         return callback(null, data);
     });
