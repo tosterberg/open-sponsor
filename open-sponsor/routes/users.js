@@ -152,6 +152,7 @@ router.get('/sponsees', passport.authenticate('jwt', {session:false}), (req, res
     });
 });
 
+//  Keep at bottom or it will overwrite lower tree depth searchs as a username query
 router.get('/:username', passport.authenticate('jwt', {session:false}), (req, res, next) => {
     User.getQueryUsers({username: req.params.username}, (err, users) => {
         try {
