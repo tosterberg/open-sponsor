@@ -39,7 +39,7 @@ router.put('/edit/:id', (req, res, next) => {
         if(err){
             res.json({success: false, msg:'Failed to update user'});
         } else {
-            res.json({success: true, msg:'User updated'});
+            res.json({success: true, msg:'User updated', user: user});
         }
     });
 });
@@ -160,11 +160,7 @@ router.get('/:username', passport.authenticate('jwt', {session:false}), (req, re
             if(!users[0]){
                 return res.json({success: false, msg: 'Error in retrieving user'});
             }
-            return res.json({
-                success: true,
-                msg: 'Success in retrieving user',
-                userId: users[0]._id
-            });
+            return res.json({success: true, msg: 'Successfully retrieved users', user: users});
         } catch (err) {
             console.error('Error: ', err);
             return res.json({success: false, msg: 'Error in retrieving user'});

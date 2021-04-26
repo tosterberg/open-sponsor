@@ -35,6 +35,10 @@ const LearnSchema = mongoose.Schema({
         type: Number,
         required: true
     },
+    username: {
+        type: String,
+        required: false
+    },
     master: {
         type: Boolean,
         required: true

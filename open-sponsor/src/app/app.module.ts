@@ -23,6 +23,11 @@ import { ChatFormComponent } from './components/chatroom/chat-form/chat-form.com
 import { UserSearchComponent } from './components/user-search/user-search.component';
 import { PersonalMessagesComponent } from './components/personal-messages/personal-messages.component';
 import { ConnectUsersComponent } from './components/connect-users/connect-users.component';
+import { CreateLearningComponent } from './components/create-learning/create-learning.component';
+import { EditLearningComponent } from './components/edit-learning/edit-learning.component';
+import { SearchLearningComponent } from './components/search-learning/search-learning.component';
+import { RequestsComponent } from './components/requests/requests.component';
+import { StepworkComponent } from './components/stepwork/stepwork.component';
 
 //import services
 import { ValidateService } from './services/validate.service';
@@ -31,10 +36,6 @@ import { AuthGuard } from './services/auth.guard'
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { ChatService } from './services/chat.service';
 import { ConnectService } from './services/connect.service';
-import { CreateLearningComponent } from './components/create-learning/create-learning.component';
-import { EditLearningComponent } from './components/edit-learning/edit-learning.component';
-import { SearchLearningComponent } from './components/search-learning/search-learning.component';
-
 
 
 //  Create route map for moving around the url
@@ -45,7 +46,12 @@ const appRoutes: Routes = [
     {path:'login', component: LoginComponent},
     {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
     {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
-    {path:'chatroom', component: ChatroomComponent, canActivate:[AuthGuard]}
+    {path:'chatroom', component: ChatroomComponent, canActivate:[AuthGuard]},
+    {path:'requests', component: RequestsComponent, canActivate:[AuthGuard]},
+    {path:'createModules', component: CreateLearningComponent, canActivate:[AuthGuard]},
+    {path:'editModules', component: EditLearningComponent, canActivate:[AuthGuard]},
+    {path:'findModules', component: SearchLearningComponent, canActivate:[AuthGuard]},
+    {path:'stepwork', component: StepworkComponent, canActivate:[AuthGuard]}
 ]
 
 /*
@@ -74,7 +80,9 @@ const appRoutes: Routes = [
     ConnectUsersComponent,
     CreateLearningComponent,
     EditLearningComponent,
-    SearchLearningComponent
+    SearchLearningComponent,
+    RequestsComponent,
+    StepworkComponent
   ],
   imports: [
     BrowserModule,

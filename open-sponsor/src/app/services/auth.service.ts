@@ -8,6 +8,7 @@ import { User } from '../models/user.model';
 export class AuthService {
     authToken: any;
     user!: User;
+    targetUser!: User;
     url: String = 'http://localhost:3000/';
 
     constructor(private http: HttpClient) {
@@ -36,6 +37,10 @@ export class AuthService {
     getUser(){
         this.loadUser();
         return this.user;
+    }
+
+    getToken(){
+        return this.authToken;
     }
 
     getAnotherUsersIdByUsername(username: string){
@@ -88,6 +93,26 @@ export class AuthService {
         return this.http.put(this.url+'users/edit/'+user._id, user, {headers: headers});
     }
 
+    updateUserSponsor(first: string){
+        let tempurl = this.url+'users/edit/'+this.targetUser._id;
+        let headers = new HttpHeaders();
+        headers = headers.append('Content-Type', 'application/json');
+        this.targetUser.sponsor = first;
+        this.http.put(tempurl, {_id: this.targetUser._id, sponsor: this.targetUser.sponsor}, {headers: headers}).subscribe((data: any) => {
+                return data;
+        });
+    }
+
+    updateUserSponsee(first: string){
+        let tempurl = this.url+'users/edit/'+this.targetUser._id;
+        let headers = new HttpHeaders();
+        headers = headers.append('Content-Type', 'application/json');
+        this.targetUser.sponsee.push({username: first});
+        this.http.put(tempurl, {_id: this.targetUser._id, sponsee: this.targetUser.sponsee}, {headers: headers}).subscribe((data: any) => {
+            return data;
+        });
+    }
+
     updateUserOnline(){
         let headers = new HttpHeaders();
         headers = headers.append('Content-Type', 'application/json');
@@ -117,6 +142,13 @@ export class AuthService {
         this.loadToken();
         const isExpired = helper.isTokenExpired(this.authToken)
         return !isExpired;
+    }
+
+    setTargetUser(username: string, callback: any){
+        this.getAnotherUsersIdByUsername(username).subscribe((user: any) => {
+            this.targetUser = user.user[0];
+            callback(this.targetUser);
+        });
     }
 
     storeUserData(token: any, user: User){

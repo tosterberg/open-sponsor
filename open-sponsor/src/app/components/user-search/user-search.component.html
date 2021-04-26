@@ -4,7 +4,7 @@
 <div *ngIf="search">
     <br>
     <div class="search card" style="width: 56rem;">
-        <div *ngFor="let users of search" class="users">
+        <div *ngFor="let users of search; index as i" class="users">
             <div class="card-header">
                 <div class="text-front">
                     <em>{{ users.username }}</em>
@@ -15,10 +15,10 @@
             </div>
             <div>
                 <div *ngIf="searchType==='sponsor'" class="text-end">
-                    <button class="btn btn-primary text-end">Sponsor me?</button>
+                    <button (click)="sponsorRequest(users)" [disabled]="users.disabled" (click)="users.disabled=true" class="btn btn-primary text-end">Sponsor me?</button>
                 </div>
                 <div *ngIf="searchType==='sponsee'" class="text-end">
-                    <button class="btn btn-primary text-end">Sponsor them!</button>
+                    <button (click)="sponseeRequest(users)" [disabled]="users.disabled" (click)="users.disabled=true" class="btn btn-primary text-end">Sponsor them!</button>
                 </div>
             </div>
         </div>

@@ -9,9 +9,14 @@ const config = require('../config/database');
 const RequestSchema = mongoose.Schema({
     key: {
         type: String,
+        index: {unique: true},
         required: true
     },
-    username: {
+    toUsername: {
+        type: String,
+        required: true
+    },
+    fromUsername: {
         type: String,
         required: true
     },
@@ -19,13 +24,17 @@ const RequestSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    timestamp: {
+    reqType: {
         type: String,
         required: true
     },
+    timestamp: {
+        type: String,
+        required: false
+    },
     datetime: {
         type: Number,
-        required: true
+        required: false
     },
     connect: {
         type: Boolean,
@@ -40,9 +49,22 @@ module.exports.getRequestsByID = function(id, callback){
     Request.findById(id, callback);
 }
 
-module.exports.getRequestsByUsername = function(username, callback){
-    const query = {username: username};
-    Request.findOne(query, callback);
+module.exports.getMyRequests = function(username, callback){
+    const query = {toUsername: username};
+    Request.find(query, callback);
+}
+
+module.exports.getMyRooms = function(key, callback){
+    const query = { $and: [
+                {
+                    "key": new RegExp(key, 'i'),
+                },
+                {
+                    "reqType": "connected",
+                }
+            ]
+        };
+    Request.find(query, callback);
 }
 
 module.exports.getRequestConv = function(pair, callback){
@@ -50,6 +72,9 @@ module.exports.getRequestConv = function(pair, callback){
     Request.findOne(query, callback);
 }
 
+module.exports.updateRequest = function(req, callback){
+    Request.findByIdAndUpdate(req._id, req, callback);
+}
 
 // Write function to add request to persistant storage
 module.exports.addRequest = function(newReq, callback){

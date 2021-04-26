@@ -34,8 +34,6 @@ export class ChatService {
       chatMessage.message = msg;
       chatMessage.datetime = Date.now();
 
-      //this.chatMessage.key = [{}]; //replace with all online user id's when available
-
       return this.http.post(this.url+'messages/chatmessage', JSON.stringify(chatMessage), {headers: headers}).subscribe();
   }
 

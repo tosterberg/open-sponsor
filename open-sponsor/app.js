@@ -40,6 +40,7 @@ const app = express();
 const users = require('./routes/users');
 const messages = require('./routes/messages');
 const learnings = require('./routes/learnings');
+const requests = require('./routes/requests');
 
 //  Port Number
 const port = 3000;
@@ -58,6 +59,7 @@ require('./config/passport')(passport);
 
 app.use('/users', users);
 app.use('/messages', messages);
+app.use('/requests', requests);
 app.use('/learn', learnings);
 
 //  Set static folder

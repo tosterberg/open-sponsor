@@ -1,0 +1,23 @@
+<br>
+<h3>Requests for you</h3>
+<br>
+<div class="request card" style="width: 42rem;">
+    <div *ngFor="let msg of requests; index as i" class="msg">
+        <div *ngIf="msg.reqType === 'sponsee' || msg.reqType === 'sponsor'">
+            <div class="card-header">
+                <div class="text-front">
+                    <em>From: {{ msg.fromUsername }}</em>
+                </div>
+            </div>
+            <div class="card-body">
+                <h6>{{ msg.request }}</h6>
+            </div>
+            <div>
+                <div class="text-end">
+                    <button (click)="acceptRequest(msg)" class="btn btn-success text-end">Accept</button>
+                    <button (click)="rejectRequest(msg)" class="btn btn-danger text-end">Reject</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

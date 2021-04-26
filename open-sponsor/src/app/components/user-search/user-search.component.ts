@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { ConnectService } from '../../services/connect.service';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-user-search',
@@ -9,10 +11,16 @@ import { AuthService } from '../../services/auth.service';
 export class UserSearchComponent implements OnInit {
 
     user !: any;
+    key !: string;
     search: any;
+    searchTarget !: string;
     searchType: string;
 
-  constructor(private authService: AuthService) {
+  constructor(
+      private authService: AuthService,
+      private connect: ConnectService,
+      private flashMessage: FlashMessagesService
+  ) {
       this.searchType = 'none';
   }
 
@@ -33,6 +41,21 @@ export class UserSearchComponent implements OnInit {
        });
   }
 
+  sponsorRequest(target: any){
+      this.searchTarget = target;
+      this.key = target._id + " " + this.user._id;
+      this.connect.makeSponsorRequest(this.key, target.username).subscribe((res: any) => {
+          if(res){
+              this.flashMessage.show("Request sent successfully", {
+                  cssClass: 'alert-success',
+                  timeout: 3000});
+          }
+      },
+      err => {
+          console.error(err);
+          return false;
+      });
+  }
 
   searchSponsee(){
       this.searchType = 'sponsee';
@@ -45,6 +68,22 @@ export class UserSearchComponent implements OnInit {
            console.log(err);
            return false;
        });
+  }
+
+  sponseeRequest(target: any){
+      this.searchTarget = target;
+      this.key = this.user._id + " " + target._id;
+      this.connect.makeSponseeRequest(this.key, target.username).subscribe((res: any) => {
+          if(res){
+              this.flashMessage.show("Request sent successfully", {
+                  cssClass: 'alert-success',
+                  timeout: 3000});
+          }
+      },
+      err => {
+          console.error(err);
+          return false;
+      });
   }
 
 }

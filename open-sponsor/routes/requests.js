@@ -6,19 +6,19 @@ const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
-const Request = require('../models/requests');
+const Request = require('../models/request');
 
 //  Post chat message
 router.post('/connect', (req, res, next) => {
-    let newMsg = new Request({
+    let newReq = new Request({
         key: req.body.key,
-        username: req.body.username,
-        request: req.body.request,
-        timestamp: req.body.timestamp,
-        datetime: req.body.datetime
+        toUsername: req.body.toUsername,
+        fromUsername: req.body.fromUsername,
+        reqType: req.body.reqType,
+        request: req.body.request
     });
 
-    Request.addRequest(newMsg, (err, msg) => {
+    Request.addRequest(newReq, (err, msg) => {
         if(err){
             res.json({success: false, msg:'Failed to post request'});
         } else {
@@ -27,10 +27,35 @@ router.post('/connect', (req, res, next) => {
     });
 });
 
+router.put('/edit/:id', (req, res, next) => {
+    Request.updateRequest(req.body, (err, req) => {
+        if(err){
+            res.json({success: false, msg:'Failed to update request'});
+        } else {
+            res.json({success: true, msg:'Request updated', reqs: req});
+        }
+    });
+});
 
-//  **PROTECTED** Chatroom
-router.get('/requests', passport.authenticate('jwt', {session:false}), (req, res, next) => {
-    res.json({user: req.user});
+//  **PROTECTED**
+router.get('/connections/:key', passport.authenticate('jwt', {session:false}), (req, res, next) => {
+    Request.getMyRooms(req.params.key, (err, reqs) => {
+        if(err){
+            res.json({success: false, msg:'Failed to retrieve messages'});
+        } else {
+            res.json(reqs);
+        }
+    });
+});
+
+router.get('/myRequests/:username', passport.authenticate('jwt', {session:false}), (req, res, next) => {
+    Request.getMyRequests(req.params.username, (err, reqs) => {
+        if(err){
+            res.json({success: false, msg:'Failed to retrieve messages'});
+        } else {
+            res.json(reqs);
+        }
+    });
 });
 
 module.exports = router;
