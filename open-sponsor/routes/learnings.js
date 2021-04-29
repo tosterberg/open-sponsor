@@ -9,20 +9,21 @@ const config = require('../config/database');
 const Learn = require('../models/learn');
 
 //  Post chat message
-router.post('/learnings', (req, res, next) => {
+router.post('/', (req, res, next) => {
     let newModule = new Learn({
         creator: req.body.creator,
-        name: req.body.name,
+        title: req.body.title,
         step: req.body.step,
-        timestamp: req.body.timestamp,
-        datetime: req.body.datetime
+        content: req.body.content,
+        stepwork: req.body.stepwork,
+        master: true
     });
-
+    
     Learn.addModule(newModule, (err, msg) => {
         if(err){
-            res.json({success: false, msg:'Failed to post message'});
+            res.json({success: false, msg:'Failed to post learning'});
         } else {
-            res.json({success: true, msg: 'Message was posted'});
+            res.json({success: true, msg: 'Learning was posted'});
         }
     });
 });

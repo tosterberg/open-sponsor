@@ -22,6 +22,8 @@ export class ChatFormComponent implements OnInit {
   send() {
       this.chat.sendMessage(this.message, 'chatroom');
       this.message = '';
+      /** Below forces a window refresh until messaging can be updated with sockets */
+      window.location.reload();
   }
 
   handleSubmit(event: any) {

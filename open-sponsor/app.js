@@ -60,7 +60,7 @@ require('./config/passport')(passport);
 app.use('/users', users);
 app.use('/messages', messages);
 app.use('/requests', requests);
-app.use('/learn', learnings);
+app.use('/learnings', learnings);
 
 //  Set static folder
 app.use(express.static(path.join(__dirname, 'public')));

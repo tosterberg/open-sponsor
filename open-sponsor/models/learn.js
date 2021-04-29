@@ -11,7 +11,7 @@ const LearnSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    name: {
+    title: {
         type: String,
         required: true
     },
@@ -29,11 +29,11 @@ const LearnSchema = mongoose.Schema({
     },
     timestamp: {
         type: String,
-        required: true
+        required: false
     },
     datetime: {
         type: Number,
-        required: true
+        required: false
     },
     username: {
         type: String,
@@ -64,5 +64,6 @@ module.exports.getModuleByUsername = function(username, callback){
 
 // Write function to add learning module to persistant storage
 module.exports.addModule = function(newModule, callback){
+    console.log('addModule', newModule);
     newModule.save(callback);
 }

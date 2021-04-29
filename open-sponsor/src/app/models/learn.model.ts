@@ -1,7 +1,7 @@
 export class Learn {
     _id?: string;
     creator?: string;
-    name?: string;
+    title?: string;
     step?: string;
     content?: string;
     stepwork?: string;
