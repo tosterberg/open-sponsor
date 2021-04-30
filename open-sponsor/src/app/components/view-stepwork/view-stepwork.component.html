@@ -1,0 +1,29 @@
+<h2 class="page-header text-center">View Sponsee Stepwork</h2>
+<form>
+    <div class="form-group">
+        <div>
+            <label>Title: <em>{{ learn.title }}</em></label>
+        </div>
+        <div>
+            <label>Step: <em>Step {{ learn.step }}</em></label>
+        </div>
+        <div>
+            <label>Username: <em>@{{ learn.username }}</em></label>
+        </div>
+    </div>
+    <div class="form-outline">
+        <label>Learning Content</label>
+        <div class="text-center">
+            <textarea readonly rows="10" cols="80">{{ learn.content }}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Stepwork Working Area</label>
+        <div class="text-center">
+            <textarea readonly rows="10" cols="80">{{ learn.stepwork }}</textarea>
+        </div>
+    </div>
+    <div class="text-center">
+        <button [routerLink]="['/sponseeStepwork']" type="button" class="btn btn-secondary" value="Cancel">Exit</button>
+    </div>
+</form>

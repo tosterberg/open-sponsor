@@ -5,11 +5,11 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-edit-learning',
-  templateUrl: './edit-learning.component.html',
-  styleUrls: ['./edit-learning.component.css']
+  selector: 'app-edit-stepwork',
+  templateUrl: './edit-stepwork.component.html',
+  styleUrls: ['./edit-stepwork.component.css']
 })
-export class EditLearningComponent implements OnInit {
+export class EditStepworkComponent implements OnInit {
     username !: any;
     learn !: Learn;
 
@@ -17,8 +17,7 @@ export class EditLearningComponent implements OnInit {
       private learnService: LearningService,
       private flashMessage: FlashMessagesService,
       private router: Router
-  ) {
-  }
+  ) { }
 
   ngOnInit(): void {
       this.learn = this.learnService.getStoredLearning();
@@ -30,8 +29,8 @@ export class EditLearningComponent implements OnInit {
   onSaveModule() {
       this.learnService.updateLearning(this.learn).subscribe((data: any) => {
           if(data.success){
-              this.flashMessage.show('You published your learning module.', {cssClass: 'alert-success', timeout: 3000});
-              this.router.navigate(['/myPublishedModules']);
+              this.flashMessage.show('You saved your stepwork.', {cssClass: 'alert-success', timeout: 3000});
+              this.router.navigate(['/stepwork']);
           } else {
               this.flashMessage.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000});
           }

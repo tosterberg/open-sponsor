@@ -42,6 +42,10 @@ const LearnSchema = mongoose.Schema({
     master: {
         type: Boolean,
         required: true
+    },
+    disabled: {
+        type: Boolean,
+        required: false
     }
 });
 
@@ -52,18 +56,77 @@ module.exports.getModuleByID = function(id, callback){
     Learn.findById(id, callback);
 }
 
-module.exports.makeMyCopyModule = function(id, callback){
-    //  Update
-    Learn.findById(id, callback);
+module.exports.updateLearning = function(req, callback){
+    Learn.findByIdAndUpdate(req._id, req, callback);
 }
 
-module.exports.getModuleByUsername = function(username, callback){
-    const query = {username: username};
-    Learn.findOne(query, callback);
+module.exports.deleteMyStepwork = function(id, callback){
+    Learn.findOneAndDelete({_id: id}, callback);
+}
+
+module.exports.getUsersModules = function(creator, callback){
+    const query = { $and: [
+            {
+                "creator": creator,
+            },
+            {
+                "master" : true
+            }
+        ]
+    };
+    Learn.find(query, callback);
+}
+
+module.exports.getUsersStepwork = function(username, callback){
+    const query = { $and: [
+            {
+                "username": username,
+            },
+            {
+                "master" : false,
+            }
+        ]
+    };
+    Learn.find(query, callback);
+}
+
+module.exports.getMasterByQuery = function(search, callback){
+    const query =
+            { $and: [
+                {
+                    "master": true,
+                },
+                { $or: [
+                    {
+                        "title": new RegExp(search, 'i'),
+                    },
+                    {
+                        "creator": new RegExp(search, 'i'),
+                    },
+                    {
+                        "step": new RegExp(search, 'i'),
+                    }
+                    ]
+                }
+            ]
+        };
+
+    Learn.find(query, callback);
+}
+
+module.exports.getSponseeStepwork = function(usernames, callback){
+    let query = [];
+
+    for(let i in usernames){
+        query.push({ "username": usernames[i].username })
+    }
+
+    query = query.length > 0 ? { $or: query } : {};
+
+    Learn.find(query, callback);
 }
 
 // Write function to add learning module to persistant storage
 module.exports.addModule = function(newModule, callback){
-    console.log('addModule', newModule);
     newModule.save(callback);
 }

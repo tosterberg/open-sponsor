@@ -1,0 +1,24 @@
+<div class="jumbotron">
+    <h3 class="text-center">My Published Learning Modules</h3>
+    <br>
+    <div class="text-center">
+        <button (click)="onSearch()" [routerLink]="['/myPublishedModules']" type="button" class="btn btn-outline-primary">Show my published Modules</button>
+        <label>&nbsp;&nbsp;</label>
+        <input [routerLink]="['/createModules']" type="submit" class="btn btn-outline-secondary" value="Add a new module">
+    </div>
+</div>
+<div class="feed card" style="width: 48rem;">
+    <div *ngFor="let learn of learnings; let i = index" class="learn">
+        <div class="card-header">
+            <div class="text-end">
+                <em>Step {{ learn.step }}</em>
+            </div>
+        </div>
+        <div class="card-body">
+            <h6>{{ learn.title }}</h6>
+            <div class="text-end">
+                <button (click)="onEdit(i)" [routerLink]="['/editModules']" type="button" class="btn btn-secondary text-end">Edit</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -16,11 +16,13 @@ router.post('/', (req, res, next) => {
         step: req.body.step,
         content: req.body.content,
         stepwork: req.body.stepwork,
-        master: true
+        username: req.body.username,
+        master: req.body.master
     });
-    
+
     Learn.addModule(newModule, (err, msg) => {
         if(err){
+            console.error(err);
             res.json({success: false, msg:'Failed to post learning'});
         } else {
             res.json({success: true, msg: 'Learning was posted'});
@@ -29,13 +31,79 @@ router.post('/', (req, res, next) => {
 });
 
 //  Get the current conversation from chatroom
-router.get('/learnings/:id', (req, res, next) => {
-    Learn.getCurrentConv(req, (err, data) => {
+router.get('/:id', (req, res, next) => {
+    Learn.getUsersModules(req.params.id, (err, data) => {
         if(err){
-            res.json({success: false, msg:'Failed to retrieve learning module'});
+            res.json({success: false, msg:'Failed to retrieve learning modules'});
         } else {
             res.json({
-                success: true
+                success: true,
+                learnings: data
+            });
+        }
+    });
+});
+
+router.get('/stepwork/:username', (req, res, next) => {
+    Learn.getUsersStepwork(req.params.username, (err, data) => {
+        if(err){
+            res.json({success: false, msg:'Failed to retrieve learning modules'});
+        } else {
+            res.json({
+                success: true,
+                learnings: data
+            });
+        }
+    });
+});
+
+router.delete('/stepwork/:id', (req, res, next) => {
+    Learn.deleteMyStepwork(req.params.id, (err, data) => {
+        if(err){
+            res.json({success: false, msg:'Failed to delete learning modules'});
+        } else {
+            res.json({
+                success: true,
+                msg: 'Deleted learning module'
+            });
+        }
+    });
+});
+
+router.get('/search/:query', (req, res, next) => {
+    Learn.getMasterByQuery(req.params.query, (err, data) => {
+        if(err){
+            res.json({success: false, msg:'Failed to retrieve learning modules'});
+        } else {
+            res.json({
+                success: true,
+                learnings: data
+            });
+        }
+    });
+});
+
+router.put('/edit', (req, res, next) => {
+    Learn.updateLearning(req.body, (err, data) => {
+        if(err){
+            res.json({success: false, msg: err});
+        } else {
+            res.json({
+                success: true,
+                learning: data
+            });
+        }
+    });
+});
+
+router.put('/sponsees', (req, res, next) => {
+    Learn.getSponseeStepwork(req.body, (err, data) => {
+        if(err){
+            res.json({success: false, msg:'Failed to retrieve learning modules'});
+        } else {
+            res.json({
+                success: true,
+                learnings: data
             });
         }
     });

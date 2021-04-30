@@ -1,5 +1,5 @@
 <div class="jumbotron">
-    <h3 class="text-center">My Stepwork</h3>
+    <h3 class="text-center">Sponsees Stepwork</h3>
 </div>
 <div class="feed card" style="width: 48rem;">
     <div *ngFor="let learn of learnings; let i = index" class="learn">
@@ -9,11 +9,10 @@
             </div>
         </div>
         <div class="card-body">
+            <em>@{{ learn.username }}</em>
             <h6>{{ learn.title }}</h6>
             <div class="text-end">
-                <button (click)="onRemove(i)" [routerLink]="['/stepwork']" type="button" class="btn btn-danger text-end">Delete</button>
-                <label>&nbsp;&nbsp;&nbsp;</label>
-                <button (click)="onEdit(i)" [routerLink]="['/editModules']" type="button" class="btn btn-success text-end">Edit Stepwork</button>
+                <button (click)="onView(i)" [routerLink]="['/viewStepwork']" type="button" class="btn btn-primary text-end">View</button>
             </div>
         </div>
     </div>

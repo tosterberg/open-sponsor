@@ -28,6 +28,7 @@ import { EditLearningComponent } from './components/edit-learning/edit-learning.
 import { SearchLearningComponent } from './components/search-learning/search-learning.component';
 import { RequestsComponent } from './components/requests/requests.component';
 import { StepworkComponent } from './components/stepwork/stepwork.component';
+import { MyPublishedLearningsComponent } from './components/my-published-learnings/my-published-learnings.component';
 
 //import services
 import { ValidateService } from './services/validate.service';
@@ -36,6 +37,11 @@ import { AuthGuard } from './services/auth.guard'
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { ChatService } from './services/chat.service';
 import { ConnectService } from './services/connect.service';
+import { LearningService } from './services/learning.service';
+import { EditStepworkComponent } from './components/edit-stepwork/edit-stepwork.component';
+import { SponseeStepworkComponent } from './components/sponsee-stepwork/sponsee-stepwork.component';
+import { ViewStepworkComponent } from './components/view-stepwork/view-stepwork.component';
+
 
 
 //  Create route map for moving around the url
@@ -49,9 +55,13 @@ const appRoutes: Routes = [
     {path:'chatroom', component: ChatroomComponent, canActivate:[AuthGuard]},
     {path:'requests', component: RequestsComponent, canActivate:[AuthGuard]},
     {path:'createModules', component: CreateLearningComponent, canActivate:[AuthGuard]},
+    {path:'myPublishedModules', component: MyPublishedLearningsComponent, canActivate:[AuthGuard]},
     {path:'editModules', component: EditLearningComponent, canActivate:[AuthGuard]},
     {path:'findModules', component: SearchLearningComponent, canActivate:[AuthGuard]},
-    {path:'stepwork', component: StepworkComponent, canActivate:[AuthGuard]}
+    {path:'stepwork', component: StepworkComponent, canActivate:[AuthGuard]},
+    {path:'editStepwork', component: EditStepworkComponent, canActivate:[AuthGuard]},
+    {path:'viewStepwork', component: ViewStepworkComponent, canActivate:[AuthGuard]},
+    {path:'sponseeStepwork', component: SponseeStepworkComponent, canActivate:[AuthGuard]}
 ]
 
 /*
@@ -82,7 +92,11 @@ const appRoutes: Routes = [
     EditLearningComponent,
     SearchLearningComponent,
     RequestsComponent,
-    StepworkComponent
+    StepworkComponent,
+    MyPublishedLearningsComponent,
+    EditStepworkComponent,
+    SponseeStepworkComponent,
+    ViewStepworkComponent
   ],
   imports: [
     BrowserModule,
@@ -98,7 +112,8 @@ const appRoutes: Routes = [
       JwtHelperService,
       AuthGuard,
       ChatService,
-      ConnectService
+      ConnectService,
+      LearningService
   ],
   bootstrap: [AppComponent]
 })

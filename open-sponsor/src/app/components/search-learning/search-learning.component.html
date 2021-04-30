@@ -1,1 +1,23 @@
-<p>search-learning works!</p>
+<div class="jumbotron">
+    <h3 class="text-center">Search stepwork modules</h3>
+    <br>
+    <div class="input-group">
+        <input (keydown)="handleSubmit($event)" type="search" [(ngModel)]="search" name="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+        <button (click)="onSearch()" [routerLink]="['/findModules']" type="button" class="btn btn-outline-primary">search</button>
+    </div>
+</div>
+<div class="feed card" style="width: 48rem;">
+    <div *ngFor="let learn of learnings; let i = index" class="books">
+        <div class="card-header">
+            <div class="text-end">
+                <em>Step {{ learn.step }} - by {{ learn.creator }}</em>
+            </div>
+        </div>
+        <div class="card-body">
+            <h6>{{ learn.title }}</h6>
+            <div class="text-end">
+                <button (click)="onSave(i)" [disabled]="learn.disabled" (click)="learn.disabled=true" type="button" class="btn btn-secondary text-end">Save as Stepwork</button>
+            </div>
+        </div>
+    </div>
+</div>

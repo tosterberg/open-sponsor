@@ -9,4 +9,5 @@ export class Learn {
     timestamp?: string;
     datetime?: number;
     master?: boolean;
+    disabled?: boolean;
 }

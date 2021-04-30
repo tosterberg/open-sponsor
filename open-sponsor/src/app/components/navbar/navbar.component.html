@@ -16,20 +16,20 @@
             <a class="nav-link" [routerLink]="['/login']">Login</a>
           </li>
           <li *ngIf="authService.loggedIn()" class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">Stepwork</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown">
+                <li><a class="dropdown-item" [routerLink]="['/myPublishedModules']">My Modules</a></li>
+                <li><a class="dropdown-item" [routerLink]="['/findModules']">Find Modules</a></li>
+                <li><a class="dropdown-item" [routerLink]="['/stepwork']">My Step-Work</a></li>
+                <li><a class="dropdown-item" [routerLink]="['/sponseeStepwork']">Sponsee Step-Work</a></li>
+            </ul>
+          </li>
+          <li *ngIf="authService.loggedIn()" class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown">
                 <li><a class="dropdown-item" [routerLink]="['/profile']">My Profile</a></li>
                 <li><a class="dropdown-item" [routerLink]="['/chatroom']">My Chatroom</a></li>
                 <li><a class="dropdown-item" [routerLink]="['/requests']">My Requests</a></li>
-            </ul>
-          </li>
-          <li *ngIf="authService.loggedIn()" class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">Stepwork</a>
-            <ul class="dropdown-menu" aria-labelledby="dropdown">
-                <li><a class="dropdown-item" [routerLink]="['/createModules']">Create Module</a></li>
-                <li><a class="dropdown-item" [routerLink]="['/editModules']">Edit My Modules</a></li>
-                <li><a class="dropdown-item" [routerLink]="['/findModules']">Find Modules</a></li>
-                <li><a class="dropdown-item" [routerLink]="['/stepwork']">Step-Work</a></li>
             </ul>
           </li>
           <li *ngIf="authService.loggedIn()" class="nav-item">

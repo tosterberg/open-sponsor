@@ -1,17 +1,15 @@
-<h2 class="page-header text-center">Create Stepwork Learning Module</h2>
+<h2 class="page-header text-center">Edit Stepwork Learning Module</h2>
 <form (submit)="onSaveModule()">
     <div class="form-group">
-        <label>Title</label>
-        <input type="text" [(ngModel)]="learn.title" name="learn.title" class="form-control">
+        <label>Title: <em>{{ learn.title }}</em></label>
     </div>
     <div class="form-group">
-        <label>Step</label>
-        <input type="text" [(ngModel)]="learn.step" name="learn.step" class="form-control">
+        <label>Step {{ learn.step }}</label>
     </div>
-    <div class="form-group">
+    <div class="form-outline">
         <label>Learning Content</label>
         <div class="text-center">
-            <textarea [(ngModel)]="learn.content" name="learn.content" rows="10" cols="80"></textarea>
+            <textarea readonly rows="10" cols="80">{{ learn.content }}</textarea>
         </div>
     </div>
     <div class="form-group">
@@ -23,6 +21,6 @@
     <div class="text-center">
         <input type="submit" class="btn btn-primary" value="Save Module">
         <label>&nbsp;&nbsp;</label>
-        <button [routerLink]="['/myPublishedModules']" type="button" class="btn btn-secondary" value="Cancel">Cancel</button>
+        <button [routerLink]="['/stepwork']" type="button" class="btn btn-secondary" value="Cancel">Cancel</button>
     </div>
 </form>
