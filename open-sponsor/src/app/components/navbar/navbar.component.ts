@@ -22,7 +22,6 @@ export class NavbarComponent implements OnInit {
   onLogoutClick(){
       this.authService.updateUserOffline().subscribe((data: any) => {
           if(data.success){
-              console.log(data);
           } else {
               console.log(data);
           }

@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
               setTimeout(() => {}, 1000);
               this.authService.updateUserOnline().subscribe((data: any) => {
                   if(data.success){
-                      console.log(data);
                   } else {
                       console.log(data);
                   }

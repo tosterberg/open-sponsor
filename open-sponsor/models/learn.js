@@ -118,10 +118,12 @@ module.exports.getSponseeStepwork = function(usernames, callback){
     let query = [];
 
     for(let i in usernames){
-        query.push({ "username": usernames[i].username })
+        if(usernames[0].username === undefined){
+            break;
+        }
+        query.push({ "username": usernames[i].username });
     }
-
-    query = query.length > 0 ? { $or: query } : {};
+    query = query.length > 0 ? { $or: query } : {"username": "null"};
 
     Learn.find(query, callback);
 }
