@@ -1,4 +1,4 @@
-# Use Case: UC08 Post Module
+# Use Case: UC07b Edit Module - Actor edits personal stepwork module
 
 **Actors**: Logged in User
 

@@ -1,0 +1,11 @@
+@startuml
+class StepworkComponent {
+    -username
+    -learnings
+    +constructor()
+    +ngOnInit()
+    +onSearch()
+    +onEdit()
+    +onRemove()
+}
+@enduml

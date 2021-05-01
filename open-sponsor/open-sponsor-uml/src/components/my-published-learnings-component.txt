@@ -1,0 +1,10 @@
+@startuml
+class MyPublishedLearningsComponent {
+    -username
+    -learnings
+    +constructor()
+    +ngOnInit()
+    +onSearch()
+    +onEdit()
+}
+@enduml

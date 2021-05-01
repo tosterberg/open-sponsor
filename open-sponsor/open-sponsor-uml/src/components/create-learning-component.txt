@@ -1,0 +1,8 @@
+@startuml
+class CreateLearningComponent {
+    -learn
+    +constructor()
+    +ngOnInit()
+    +onSaveModule()
+}
+@enduml

@@ -1,0 +1,9 @@
+@startuml
+class RequestsComponent {
+    -requests
+    +constructor()
+    +ngOnInit()
+    +acceptRequest()
+    +rejectRequest()
+}
+@enduml

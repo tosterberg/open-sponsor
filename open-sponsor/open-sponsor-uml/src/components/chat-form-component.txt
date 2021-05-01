@@ -1,0 +1,9 @@
+@startuml
+class ChatFormComponenet {
+    -message
+    +constructor()
+    +ngOnInit()
+    +send()
+    +handleSubmit()
+}
+@enduml

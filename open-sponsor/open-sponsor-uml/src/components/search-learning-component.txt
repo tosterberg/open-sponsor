@@ -1,0 +1,12 @@
+@startuml
+class SearchLearningComponent {
+    -search
+    -user
+    -learnings
+    +constructor()
+    +ngOnInit()
+    +onSearch()
+    +handleSubmit()
+    +onSave()
+}
+@enduml

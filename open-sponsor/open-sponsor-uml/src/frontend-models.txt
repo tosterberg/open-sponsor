@@ -1,0 +1,23 @@
+@startuml
+left to right direction
+package app {
+    class ChatMessageComponent
+    class CreateLearningComponent
+    class EditLearningComponent
+    class EditStepworkComponent
+    class SearchLearningsComponent
+    class SponseeStepworkComponent
+    class ViewStepworkComponent
+    interface User
+    interface Message
+    interface Learn
+    interface Request
+}
+ChatMessageComponent <-- Message
+CreateLearningComponent <-- Learn
+EditLearningComponent <-- Learn
+EditStepworkComponent <-- Learn
+SearchLearningsComponent <-- User
+SponseeStepworkComponent <-- User
+ViewStepworkComponent <-- Learn
+@enduml

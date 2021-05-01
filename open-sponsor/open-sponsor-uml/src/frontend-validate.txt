@@ -1,0 +1,8 @@
+@startuml
+left to right direction
+package app {
+    class RegisterComponent
+    class ValidateService
+}
+RegisterComponent <-- ValidateService
+@enduml

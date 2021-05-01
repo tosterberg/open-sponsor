@@ -8,11 +8,9 @@
             <li class="list-group-item">Looking for a sponsor? {{user.lfsponsor}}</li>
             <li class="list-group-item">Looking to sponsor others? {{user.sponsoring}}</li>
             <li *ngIf="user.sponsor;" class="list-group-item">Sponsor: {{user.sponsor}}</li>
-            <!--
-            <div *ngFor="let user.sponsee.username of user.sponsee;" class="list-group-item">Sponsee/s: {{user.sponsee.username}}</div>
-            -->
             <li class="list-group-item">Biography: {{user.bio}}</li>
         </ul>
+        <br>
         <button (click)="onEdit()" class="btn btn-secondary">Edit</button>
     </div>
     <div *ngIf="edit;">
@@ -34,16 +32,21 @@
                 <td>Looking to sponsor others? </td>
                 <td><input type="checkbox" [(ngModel)]="user.sponsoring" name="user.sponsoring" class="form-control-checkbox disable"></td>
             </tr>
-            <tr>
+            <tr *ngIf="user.sponsor">
                 <td>Sponsor: {{ user.sponsor }} &nbsp;&nbsp;</td>
                 <button (click)="onRemoveSponsor()" class="btn btn-primary">Remove Sponsor?</button>
             </tr>
-            <tr *ngIf="user.sponsor">
+            <tr>
                 <td>Biography: </td>
                 <td><textarea [(ngModel)]="user.bio" name="user.bio" rows="5" cols="80"></textarea></td>
             </tr>
         </table>
-        <button (click)="onSave()" class="btn btn-primary">Save</button>
+        <br>
+        <div>
+            <button (click)="onSave()" class="btn btn-primary">Save</button>
+            <label>&nbsp;&nbsp;</label>
+            <button (click)="onCancel()" class="btn btn-secondary">Cancel</button>
+        </div>
     </div>
 </div>
 <ng-template #elseBlock>

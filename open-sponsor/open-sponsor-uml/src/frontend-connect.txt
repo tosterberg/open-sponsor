@@ -1,0 +1,13 @@
+@startuml
+left to right direction
+package app {
+    class ChatroomComponent
+    class RequestsComponent
+    class UserSearchComponent
+    class ConnectService
+}
+ChatroomComponent <-- ConnectService
+RequestsComponent <-- ConnectService
+UserSearchComponent <-- ConnectService
+
+@enduml

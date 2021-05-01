@@ -1,0 +1,25 @@
+@startuml
+class ConnectService {
+    -myUsername
+    -myUser
+    -myRooms
+    -connectKeys
+    -request
+    -url
+    +constructor()
+    +acceptSponsorRequest()
+    +acceptSponseeRequest()
+    +deleteRequest()
+    +getMyConnections()
+    +getMyRequests()
+    +makeSponsorRequest()
+    +makeSponseeRequest()
+    +sendRequest()
+    +rejectRequest()
+    +updateMySponsor()
+    +updateMySponsees()
+    +updateTheirSponsor()
+    +updateTheirSponsees()
+    +updateRequest()
+}
+@enduml

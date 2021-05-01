@@ -1,8 +1,6 @@
 OpenSponsor
 ===========
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.
-
 ## Local install directions
 
 Download or clone the repository onto your local machine.
@@ -13,44 +11,15 @@ Download or clone the repository onto your local machine.
 Server started on port 3000
 Connected to database mongodb://localhost:27017/open-sponsor
 ```
-- Starting the frontend will require you to open another terminal window and navigate to `./open-sponsor/src` and run the angular command `ng serve -o` which will open the project web application in your default browser in a new window.
+- Starting the frontend will require you to open another terminal window and navigate to `./open-sponsor/src/` and run the angular command `ng serve -o` which will open the project web application in your default browser in a new window.
 - This is to run a local development version of the application where you will have a MongoDB service available on port 27017, a backend at `localhost:3000`, and the frontend at `localhost:4200`.
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 #### MEAN Stack Components
-- Backend -- Node.js / Express
-- Token Generation & Authentication
-- CORS
-- Mongoose ODM
-- Angular 2 / Angular-CLI
-- Angular Router, HTTP Module
-- Angular2-JWT
-- Auth Guard
-- Angular Flash Message Module
-- Compile & Deploy
+- Backend -- Node.js / Express / Mongoose
+- Authorization -- Passport
+- Running multiple ports on localhost -- CORS
+- Frontend -- Angular 2 / Angular-CLI
 
 #### Links
 - https://nodejs.org/en/

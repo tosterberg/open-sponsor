@@ -21,14 +21,15 @@ import { ChatFeedComponent } from './components/chatroom/chat-feed/chat-feed.com
 import { ChatMessageComponent } from './components/chatroom/chat-message/chat-message.component';
 import { ChatFormComponent } from './components/chatroom/chat-form/chat-form.component';
 import { UserSearchComponent } from './components/user-search/user-search.component';
-import { PersonalMessagesComponent } from './components/personal-messages/personal-messages.component';
-import { ConnectUsersComponent } from './components/connect-users/connect-users.component';
 import { CreateLearningComponent } from './components/create-learning/create-learning.component';
 import { EditLearningComponent } from './components/edit-learning/edit-learning.component';
 import { SearchLearningComponent } from './components/search-learning/search-learning.component';
 import { RequestsComponent } from './components/requests/requests.component';
 import { StepworkComponent } from './components/stepwork/stepwork.component';
 import { MyPublishedLearningsComponent } from './components/my-published-learnings/my-published-learnings.component';
+import { EditStepworkComponent } from './components/edit-stepwork/edit-stepwork.component';
+import { SponseeStepworkComponent } from './components/sponsee-stepwork/sponsee-stepwork.component';
+import { ViewStepworkComponent } from './components/view-stepwork/view-stepwork.component';
 
 //import services
 import { ValidateService } from './services/validate.service';
@@ -38,11 +39,6 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { ChatService } from './services/chat.service';
 import { ConnectService } from './services/connect.service';
 import { LearningService } from './services/learning.service';
-import { EditStepworkComponent } from './components/edit-stepwork/edit-stepwork.component';
-import { SponseeStepworkComponent } from './components/sponsee-stepwork/sponsee-stepwork.component';
-import { ViewStepworkComponent } from './components/view-stepwork/view-stepwork.component';
-
-
 
 //  Create route map for moving around the url
 //  Routes protected by AuthGuard will reroute to login when not logged in
@@ -86,8 +82,6 @@ const appRoutes: Routes = [
     ChatMessageComponent,
     ChatFormComponent,
     UserSearchComponent,
-    PersonalMessagesComponent,
-    ConnectUsersComponent,
     CreateLearningComponent,
     EditLearningComponent,
     SearchLearningComponent,

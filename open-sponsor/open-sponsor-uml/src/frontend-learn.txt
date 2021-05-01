@@ -1,0 +1,22 @@
+@startuml
+left to right direction
+package app {
+    class CreateLearningComponent
+    class EditLearningComponent
+    class EditStepworkComponent
+    class MyPublishedLearningsComponent
+    class SearchLearningsComponent
+    class SponseeStepworkComponent
+    class StepworkComponent
+    class ViewStepworkComponent
+    class LearningService
+}
+CreateLearningComponent <-- LearningService
+EditLearningComponent <-- LearningService
+EditStepworkComponent <-- LearningService
+MyPublishedLearningsComponent <-- LearningService
+SearchLearningsComponent <-- LearningService
+SponseeStepworkComponent <-- LearningService
+StepworkComponent <-- LearningService
+ViewStepworkComponent <-- LearningService
+@enduml

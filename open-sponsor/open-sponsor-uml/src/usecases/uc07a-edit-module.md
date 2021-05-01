@@ -1,4 +1,4 @@
-# Use Case: UC08 Post Module
+# Use Case: UC07a Edit Module - Author edits module
 
 **Actors**: Logged in User
 

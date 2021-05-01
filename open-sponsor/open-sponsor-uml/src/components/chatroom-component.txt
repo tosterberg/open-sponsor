@@ -1,0 +1,9 @@
+@startuml
+class ChatroomComponent {
+    -rooms
+    -title
+    +constructor()
+    +ngOnInit()
+    +filterMessages()
+}
+@enduml

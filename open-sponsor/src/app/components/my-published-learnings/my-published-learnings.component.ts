@@ -21,21 +21,20 @@ export class MyPublishedLearningsComponent implements OnInit {
   }
 
   onSearch() {
-    /** Clear books so that new search starts on a fresh screen */
-    this.learnService.getMyLearnings(this.username).subscribe((res: any) => {
-        if (res.learnings[0]) {
-            this.learnings = res.learnings;
-            return true;
-        }
-    },
-    err => {
-        console.log(err);
-        return false;
-    });
-}
+        /** Clear books so that new search starts on a fresh screen */
+        this.learnService.getMyLearnings(this.username).subscribe((res: any) => {
+            if (res.learnings[0]) {
+                this.learnings = res.learnings;
+                return true;
+            }
+        }, err => {
+                console.log(err);
+                return false;
+        });
+    }
 
-onEdit(index: number) {
-    this.learnService.storeLearningForEdit(this.learnings[index]);
-}
+    onEdit(index: number) {
+        this.learnService.storeLearningForEdit(this.learnings[index]);
+    }
 
 }

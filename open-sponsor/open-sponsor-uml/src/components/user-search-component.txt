@@ -1,0 +1,15 @@
+@startuml
+class UserSearchComponent {
+    -user
+    -key
+    -search
+    -searchTarget
+    -searchType
+    +constructor()
+    +ngOnInit()
+    +searchSponsor()
+    +sponsorRequest()
+    +searchSponsee()
+    +sponseeRequest()
+}
+@enduml

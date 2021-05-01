@@ -1,0 +1,10 @@
+@startuml
+class ChatMessageComponent {
+    -chatMessage
+    -username
+    -message
+    -timestamp
+    +constructor()
+    +ngOnInit()
+}
+@enduml

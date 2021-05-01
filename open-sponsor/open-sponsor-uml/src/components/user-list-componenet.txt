@@ -1,0 +1,9 @@
+@startuml
+class UserListComponent {
+    -users
+    +constructor()
+    +ngOnInit()
+    +ngOnChanges()
+    +getLoggedInUsers()
+}
+@enduml

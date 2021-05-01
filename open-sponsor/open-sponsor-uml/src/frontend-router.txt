@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+package app {
+    class CreateLearningComponent
+    class EditStepworkComponent
+    class LoginComponent
+    class NavbarComponent
+    class RegisterComponent
+    class SponseeStepworkComponent
+    class StepworkComponent
+    class Router
+}
+CreateLearningComponent <-- Router
+EditStepworkComponent <-- Router
+LoginComponent <-- Router
+NavbarComponent <-- Router
+RegisterComponent <-- Router
+SponseeStepworkComponent <-- Router
+StepworkComponent <-- Router
+@enduml

@@ -1,27 +1,78 @@
 @startuml
 left to right direction
 package app {
+    class ChatFeedComponent
+    class ChatFormComponent
+    class ChatMessageComponent
+    class ChatroomComponent
+    class CreateLearningComponent
     class DashboardComponent
+    class EditLearningComponent
+    class EditStepworkComponent
     class HomeComponent
     class LoginComponent
+    class MyPublishedLearningsComponent
     class NavbarComponent
     class ProfileComponent
     class RegisterComponent
+    class RequestsComponent
+    class SearchLearningsComponent
+    class SponseeStepworkComponent
+    class StepworkComponent
+    class UserListComponent
+    class UserSearchComponent
+    class ViewStepworkComponent
     interface User
+    interface Message
+    interface Learn
+    interface Request
     class AuthGuard
     class AuthService
+    class ChatService
+    class ConnectService
+    class LearningService
+    class Router
     class ValidateService
 }
-package routes {
-    class Router
-}
+ChatFeedComponent <-- ChatService
+ChatFormComponent <-- ChatService
+ChatMessageComponent <-- Message
+UserListComponent <-- AuthService
+ChatroomComponent <-- ConnectService
+CreateLearningComponent <-- AuthService
+CreateLearningComponent <-- LearningService
+CreateLearningComponent <-- Router
+CreateLearningComponent <-- Learn
+EditLearningComponent <-- AuthService
+EditLearningComponent <-- LearningService
+EditLearningComponent <-- Learn
+EditStepworkComponent <-- LearningService
+EditStepworkComponent <-- Learn
+EditStepworkComponent <-- Router
 LoginComponent <-- AuthService
 LoginComponent <-- Router
+MyPublishedLearningsComponent <-- AuthService
+MyPublishedLearningsComponent <-- LearningService
 NavbarComponent <-- AuthService
 NavbarComponent <-- Router
 ProfileComponent <-- AuthService
 RegisterComponent <-- AuthService
 RegisterComponent <-- Router
 RegisterComponent <-- ValidateService
+RequestsComponent <-- ConnectService
+SearchLearningsComponent <-- AuthService
+SearchLearningsComponent <-- LearningService
+SearchLearningsComponent <-- User
+SponseeStepworkComponent <-- AuthService
+SponseeStepworkComponent <-- LearningService
+SponseeStepworkComponent <-- Router
+SponseeStepworkComponent <-- User
+StepworkComponent <-- AuthService
+StepworkComponent <-- LearningService
+StepworkComponent <-- Router
+UserSearchComponent <-- AuthService
+UserSearchComponent <-- ConnectService
+ViewStepworkComponent <-- LearningService
+ViewStepworkComponent <-- Learn
 AuthGuard <-- AuthService
 @enduml

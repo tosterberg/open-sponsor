@@ -1,0 +1,32 @@
+@startuml
+left to right direction
+package app {
+    class CreateLearningComponent
+    class EditLearningComponent
+    class LoginComponent
+    class MyPublishedLearningsComponent
+    class NavbarComponent
+    class ProfileComponent
+    class RegisterComponent
+    class SearchLearningsComponent
+    class SponseeStepworkComponent
+    class StepworkComponent
+    class UserSearchComponent
+    class UserListComponent
+    class AuthGuard
+    class AuthService
+}
+CreateLearningComponent <-- AuthService
+EditLearningComponent <-- AuthService
+LoginComponent <-- AuthService
+MyPublishedLearningsComponent <-- AuthService
+NavbarComponent <-- AuthService
+ProfileComponent <-- AuthService
+RegisterComponent <-- AuthService
+SearchLearningsComponent <-- AuthService
+SponseeStepworkComponent <-- AuthService
+StepworkComponent <-- AuthService
+UserListComponent <-- AuthService
+UserSearchComponent <-- AuthService
+AuthGuard <-- AuthService
+@enduml

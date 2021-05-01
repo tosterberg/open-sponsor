@@ -1,0 +1,12 @@
+@startuml
+class ChatService {
+    -user
+    -chatMessage
+    -chatMessages
+    -url
+    +constructor()
+    +sendMessage()
+    +getMessages()
+    +getTimeStamp()
+}
+@enduml

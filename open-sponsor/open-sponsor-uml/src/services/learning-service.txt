@@ -1,0 +1,22 @@
+@startuml
+class LearningService {
+    -myUsername
+    -user
+    -learning
+    -url
+    +constructor()
+    +postNewLearning()
+    +getStoredLearning()
+    +getSearchLearnings()
+    +storeLearningForEdit()
+    +saveLearningToStepwork()
+    +removeStepwork()
+    +updateLearning()
+    +getMyLearnings()
+    +getMyStepwork()
+    +getSponseeStepwork()
+    +loadStepwork()
+    +loadUsername()
+    +storeUserData()
+}
+@enduml

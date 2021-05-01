@@ -1,0 +1,11 @@
+@startuml
+class SponseeStepworkComponent {
+    -sponsees
+    -learnings
+    -user
+    +constructor()
+    +ngOnInit()
+    +onSearch()
+    +onView()
+}
+@enduml

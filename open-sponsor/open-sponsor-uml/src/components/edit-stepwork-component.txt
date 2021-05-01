@@ -1,0 +1,9 @@
+@startuml
+class EditStepworkComponent {
+    -username
+    -learn
+    +constructor()
+    +ngOnInit()
+    +onSaveModule()
+}
+@enduml

@@ -1,0 +1,10 @@
+@startuml
+left to right direction
+package app {
+    class ChatFeedComponent
+    class ChatFormComponent
+    class ChatService
+}
+ChatFeedComponent <-- ChatService
+ChatFormComponent <-- ChatService
+@enduml

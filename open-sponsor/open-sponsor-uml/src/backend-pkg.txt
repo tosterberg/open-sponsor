@@ -1,11 +1,85 @@
 @startuml
 left to right direction
 package back-end {
+    package models {
+        class learn {
+            -creator
+            -title
+            -step
+            -content
+            -stepwork
+            -timestamp
+            -datetime
+            -username
+            -master
+            -disabled
+            +getModuleByID()
+            +updateLearning()
+            +deleteMyStepwork()
+            +getUsersModules()
+            +getUsersStepwork()
+            +getMasterByQuery()
+            +getSponseeStepwork()
+        }
+        class message {
+            -key
+            -username
+            -message
+            -timestamp
+            -datetime
+            +getMessagesByID()
+            +getMessagesByUsername()
+            +getPrivateConv()
+            +getCurrentConv()
+            +addMessage()
+        }
+        class request {
+            -key
+            -toUsername
+            -fromUsername
+            -request
+            -reqType
+            -timestamp
+            -datetime
+            -connect
+            +getRequestsByID()
+            +getMyRequests()
+            +getMyRooms()
+            +getRequestConv()
+            +updateRequest()
+            +addRequest()
+        }
+        class user {
+            -name
+            -email
+            -username
+            -password
+            -lfsponsor
+            -sponsoring
+            -bio
+            -status
+            -reported
+            -sponsor
+            -sponsee
+            +getUserByID()
+            +getUserByUsername()
+            +addUser()
+            +updateUser()
+            +comparePassword()
+            +getQueryUsers()
+        }
+    }
     package routes {
-        class Router
+
     }
     database "MongoDB" {
         folder "users" {
+        }
+        folder "messages" {
+        }
+        folder "requests" {
+        }
+        folder "learnings" {
         }
     }
 }

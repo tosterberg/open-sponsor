@@ -1,0 +1,7 @@
+@startuml
+class ChatFeedComponent {
+    -feed
+    +constructor()
+    +ngOnInit()
+}
+@enduml

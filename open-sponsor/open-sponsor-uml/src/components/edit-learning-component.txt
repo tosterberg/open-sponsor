@@ -1,0 +1,9 @@
+@startuml
+class EditLearningComponent {
+    -username
+    -learn
+    +constructor()
+    +ngOnInit()
+    +onSaveModule()
+}
+@enduml

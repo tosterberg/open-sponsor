@@ -38,6 +38,10 @@ export class ProfileComponent implements OnInit {
       this.edit = true;
   }
 
+  onCancel() {
+      this.edit = false;
+  }
+
   onSave() {
       this.authService.updateUser(this.user).subscribe((data: any) => {
           if(data.success){
