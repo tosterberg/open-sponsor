@@ -6,13 +6,11 @@
 
 **Primary Actor**: Logged in User
 
-**Preconditions**: Browser has navigated to `$PATH/dashboard`, the user logged in, and the user has a registered account.
+**Preconditions**: Browser has navigated to `$PATH/createModules`, the user logged in, and the user has a registered account.
 
-**Triggers**: .
+**Triggers**: Actor clicks the "Save Module" button.
 
-**Purpose**: .
-
-**Overview**: .
+**Purpose**: Actor is posting a learning module to be worked on by other users.
 
 ---
 
@@ -20,16 +18,18 @@
 
 | Actor Action | System Response |
 |:--------------|:----------------|
-| 1. Actor navigates to /dashboard after logging in.| |
-| 2. Actor clicks the "Find a Sponsor" button. | 3. System authenticates the users JWT token. |
-| | 4. System retrieves users meeting the criteria. |
-| | 5. System displays a list of users with a button prompt to interact. |
+| 1. Actor navigates to /createModules after logging in.| |
+| 2. Actor fills in all fields to create a learning module.| |
+| 3. Actor clicks the "Save Module" button. | 4. System validates the submission. |
+| | 5. System adds the learning module to the collection. |
+| | 6. System displays successful posting. |
 
 ___
 
 ## Alternative Courses:
 
-**1a.** Actor clicks the "Find Sponsees" button.
+**1a.** Actor clicks the "Save Module" button without filling out all fields.
+**1b.** Actor clicks the "Cancel" button.
 
 ---
 
@@ -38,13 +38,21 @@ ___
 ### 1a
 | Actor Action | System Response |
 |:--------------|:----------------|
-| 1. Actor navigates to /dashboard after logging in.| |
-| 2. Actor clicks the "Find Sponsees" button. | 3. System authenticates the users JWT token. |
-| | 4. System retrieves users meeting the criteria. |
-| | 5. System displays a list of users with a button prompt to interact. |
+| 1. Actor navigates to /createModules after logging in.| |
+| 2. Actor does not fill in all fields to create a learning module.| |
+| 3. Actor clicks the "Save Module" button. | 4. System validates the submission. |
+| | 5. System displays error due to failed validation. |
+| | 5. System resets to Preconditions. |
+
+### 1b
+| Actor Action | System Response |
+|:--------------|:----------------|
+| 1. Actor navigates to /createModules after logging in.| |
+| 2. Actor does/doesn't fill in all fields to create a learning module.| |
+| 3. Actor clicks the "Cancel" button. | 4. System proceeds to Postconditions. |
 
 ---
 
-**Postconditions**: None.
+**Postconditions**: Browser navigates back to `$PATH/myPublishedModules`.
 
 ---

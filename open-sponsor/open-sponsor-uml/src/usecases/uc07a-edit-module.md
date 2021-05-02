@@ -6,13 +6,11 @@
 
 **Primary Actor**: Logged in User
 
-**Preconditions**: Browser has navigated to `$PATH/dashboard`, the user logged in, and the user has a registered account.
+**Preconditions**: Browser has navigated to `$PATH/editModules`, the user logged in, and the user is the author of the module.
 
-**Triggers**: .
+**Triggers**: Actor clicks the "Save Module" button.
 
-**Purpose**: .
-
-**Overview**: .
+**Purpose**: Actor is editing a published learning module to be worked on by other users.
 
 ---
 
@@ -20,16 +18,17 @@
 
 | Actor Action | System Response |
 |:--------------|:----------------|
-| 1. Actor navigates to /dashboard after logging in.| |
-| 2. Actor clicks the "Find a Sponsor" button. | 3. System authenticates the users JWT token. |
-| | 4. System retrieves users meeting the criteria. |
-| | 5. System displays a list of users with a button prompt to interact. |
+| 1. Actor navigates to /editModules after logging in.| |
+| 2. Actor makes a change to any field, or does not.| |
+| 3. Actor clicks the "Save Module" button. | 4. System validates the submission. |
+| | 5. System updates the learning module in the collection. |
+| | 6. System displays confirmation of successful edit. |
 
 ___
 
 ## Alternative Courses:
 
-**1a.** Actor clicks the "Find Sponsees" button.
+**1a.** Actor clicks the "Cancel" button.
 
 ---
 
@@ -38,13 +37,10 @@ ___
 ### 1a
 | Actor Action | System Response |
 |:--------------|:----------------|
-| 1. Actor navigates to /dashboard after logging in.| |
-| 2. Actor clicks the "Find Sponsees" button. | 3. System authenticates the users JWT token. |
-| | 4. System retrieves users meeting the criteria. |
-| | 5. System displays a list of users with a button prompt to interact. |
+| 1. Actor navigates to /editModules after logging in.| |
+| 2. Actor makes a change to any field, or does not.| |
+| 3. Actor clicks the "Cancel" button. | 4. System proceeds to Postconditions. |
 
 ---
 
-**Postconditions**: None.
-
----
+**Postconditions**: Browser navigates back to `$PATH/myPublishedModules`.
